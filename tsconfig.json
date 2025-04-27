@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": ["svelte"],
+    "types": ["svelte", "jest"],
     "module": "esnext",
     "moduleResolution": "node",
     "target": "esnext",

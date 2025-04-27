@@ -19,4 +19,14 @@
 - Functions should be concise, typically no longer than 20 lines. Short functions are easier to read, understand, and maintain. If a function grows too large, break it down into smaller helper functions.
 
 ## 7. Functions should span only 1 level of abstraction, at most 2
-- Each function should operate at a single level of abstraction (e.g., high-level orchestration or low-level detail, but not both). If necessary, a function may span two closely related levels. This separation clarifies intent and makes code easier to reason about.
+- Each function should operate at a single level of abstraction (e.g., high-level orchestration or low-level detail, but not both). If necessary, a function may span two closely related levels. This separation clarifies intent and makes code easier 
+to reason about.
+
+## 8. Use TypeScript
+- Use TypeScript for all new code and existing code where possible. This ensures type safety and better code quality.
+
+## 9. Avoid `any`
+- Use `any` only when absolutely necessary, and always provide a type annotation for the variable or parameter.
+
+## 10. Use Svelte
+- This project is using Svelte for the frontend. Use Svelte components and patterns where appropriate.

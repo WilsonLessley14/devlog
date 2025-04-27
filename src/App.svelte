@@ -1,13 +1,41 @@
-<script>
-  let count = 0;
+<script lang="ts">
+  import Blog from './blog/Blog.svelte';
+  import { onMount } from 'svelte';
+
+  let route = '';
+  let blogname = '';
+
+  function parseRoute() {
+    const match = location.pathname.match(/^\/blog\/(.+)$/);
+    if (match) {
+      route = 'blog';
+      blogname = match[1];
+    } else {
+      route = 'home';
+      blogname = '';
+    }
+  }
+
+  onMount(() => {
+    parseRoute();
+    window.addEventListener('popstate', parseRoute);
+    return () => window.removeEventListener('popstate', parseRoute);
+  });
+
+  function navigate(path: string) {
+    history.pushState({}, '', path);
+    parseRoute();
+  }
 </script>
 
 <main>
-  <h1>Welcome to your Devlog!</h1>
-  <p>This is your new Svelte app. Start building your devlog, blog, and games here.</p>
-  <button on:click={() => count++}>
-    Clicked {count} {count === 1 ? 'time' : 'times'}
-  </button>
+  {#if route === 'blog'}
+    <Blog {blogname} />
+  {:else}
+    <h1>Welcome to your Devlog!</h1>
+    <p>This is your new Svelte app. Start building your devlog, blog, and games here.</p>
+    <button on:click={() => navigate('/blog/todo')}>Go to blog/todo</button>
+  {/if}
 </main>
 
 <style>
