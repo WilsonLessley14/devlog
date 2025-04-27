@@ -1,10 +1,25 @@
-# dependency directories
-node_modules/
+node_modules
 
-# os specific files
+# Output
+.output
+.vercel
+.netlify
+.wrangler
+/.svelte-kit
+/build
+
+# OS
 .DS_Store
+Thumbs.db
 
-# env variables
+# Env
 .env
-.env.test
+.env.*
+!.env.example
+!.env.test
 
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+*storybook.log
