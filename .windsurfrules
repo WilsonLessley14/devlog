@@ -30,3 +30,11 @@ to reason about.
 
 ## 10. Use Svelte
 - This project is using Svelte for the frontend. Use Svelte components and patterns where appropriate.
+
+## 11. Prefer reuse from /common and /utils
+- Before writing new code, check if an existing reusable Svelte component in /common or a utility in /utils is applicable. Only create new code if a generalized, reusable option does not exist.
+
+## 12. Test suites
+- Every source file must have a corresponding test suite located alongside it in the same directory.
+- Test files must share the same name as the file they test, with the .spec extension appended before the filetype (e.g., foo.ts → foo.spec.ts, Bar.svelte → Bar.spec.ts).
+- Tests should comprehensively cover expected behavior, edge cases, and error conditions.
