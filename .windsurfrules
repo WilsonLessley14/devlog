@@ -1,0 +1,22 @@
+# WindSurf Rules
+
+## 1. All functions are orthogonal and side-effectless
+- Each function should perform a single, well-defined task and not depend on or alter external state (except via explicit input/output). Functions must not cause side effects such as modifying global variables, performing I/O, or mutating objects outside their scope. This ensures reliability, predictability, and ease of testing.
+
+## 2. All functions are JSDoc documented
+- Every function must include a JSDoc comment that clearly describes its purpose, parameters, return value, and any errors it may throw. This documentation should be accurate and up-to-date, enabling developers and tools to understand and use the function correctly.
+
+## 3. Make changes in atomic, self-contained chunks
+- Code changes should be small, focused, and isolated. Each change should address a single concern or feature, minimizing the risk of introducing bugs and making it easy to review, test, and revert if necessary.
+
+## 4. All functions are unit tested
+- Every function must have corresponding unit tests that verify its correctness for expected input, edge cases, and error conditions. Tests should be automated and run as part of the development workflow to ensure ongoing code quality.
+
+## 5. Throw errors with descriptive messages in unpredicted situations
+- When a function encounters an unexpected or invalid state, it should throw an error with a clear, descriptive message. Avoid silent failures or generic errors. This practice aids debugging and ensures that issues are surfaced early.
+
+## 6. Keep functions short
+- Functions should be concise, typically no longer than 20 lines. Short functions are easier to read, understand, and maintain. If a function grows too large, break it down into smaller helper functions.
+
+## 7. Functions should span only 1 level of abstraction, at most 2
+- Each function should operate at a single level of abstraction (e.g., high-level orchestration or low-level detail, but not both). If necessary, a function may span two closely related levels. This separation clarifies intent and makes code easier to reason about.
