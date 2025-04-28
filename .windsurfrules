@@ -36,5 +36,5 @@ to reason about.
 
 ## 12. Test suites
 - Every source file must have a corresponding test suite located alongside it in the same directory.
-- Test files must share the same name as the file they test, with the .spec extension appended before the filetype (e.g., foo.ts → foo.spec.ts, Bar.svelte → Bar.spec.ts).
+- Test files must share the same name as the file they test, with the .spec extension appended before the filetype (e.g., foo.ts → foo.spec.ts, Bar.svelte → Bar.spec.ts). Some file prefixes are excluded from this rule. Those prefixes are: ['+', '$', '@', '_']
 - Tests should comprehensively cover expected behavior, edge cases, and error conditions.
