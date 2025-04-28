@@ -12,7 +12,7 @@
 {:else}
 	<ul>
 		{#each data.posts as post}
-			<li>{post}</li>
+			<li><a href={`/blog/${post}`}>{post}</a></li>
 		{/each}
 	</ul>
 {/if}

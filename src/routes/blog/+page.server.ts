@@ -7,11 +7,12 @@ import path from 'path';
  * @returns {Promise<{ posts: string[] }>} An object containing an array of blog post filenames.
  * @throws {Error} If the directory cannot be read.
  */
-export const load: PageServerLoad = async () => {
+export const load: PageServerLoad = async (_event) => {
 	try {
 		const blogDir = path.resolve('src/lib/blogposts');
 		const files = await fs.promises.readdir(blogDir);
-		const posts = files.filter((file) => file.endsWith('.md'));
+		const postFileNames = files.filter((file) => file.endsWith('.md'));
+		const posts = postFileNames.map((file) => file.replace(/\.md$/, ''));
 		return { posts };
 	} catch (err) {
 		throw new Error(

@@ -1,12 +1,13 @@
 import { render } from '@testing-library/svelte';
 import Page from './+page.svelte';
 import { describe, expect, it } from 'vitest';
+// Render component tests
 
 describe('Blog Page', () => {
 	it('renders blog post list', () => {
-		const { getByText } = render(Page, { data: { posts: ['foo.md', 'bar.md'] } });
-		expect(getByText('foo.md')).toBeInTheDocument();
-		expect(getByText('bar.md')).toBeInTheDocument();
+		const { getByText } = render(Page, { data: { posts: ['foo', 'bar'] } });
+		expect(getByText('foo')).toBeInTheDocument();
+		expect(getByText('bar')).toBeInTheDocument();
 	});
 
 	it('renders no posts message', () => {
