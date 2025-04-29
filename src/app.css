@@ -1,1 +1,22 @@
 @import 'tailwindcss';
+
+:root {
+	--bg: #fcf8e3;
+	--fg: #333333;
+	--brand: #826ef1;
+}
+
+[data-theme='dark'] {
+	--bg: #333333;
+	--fg: #fcf8e3;
+	--brand: #1b0a7d;
+}
+
+nav {
+	background-color: var(--brand);
+}
+
+body {
+	background-color: var(--bg);
+	color: var(--fg);
+}
