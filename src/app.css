@@ -1,15 +1,19 @@
 @import 'tailwindcss';
 
-:root {
+[data-theme='light'] {
 	--bg: #fcf8e3;
 	--fg: #333333;
 	--brand: #826ef1;
+	--link: #324abf;
+	--hover-link: #2537b6;
 }
 
 [data-theme='dark'] {
 	--bg: #333333;
 	--fg: #fcf8e3;
 	--brand: #1b0a7d;
+	--link: #6e84f1;
+	--hover-link: #556ce6;
 }
 
 nav {
@@ -19,4 +23,13 @@ nav {
 body {
 	background-color: var(--bg);
 	color: var(--fg);
+}
+
+a {
+	color: var(--link);
+}
+
+a:hover {
+	text-decoration: underline;
+	color: var(--hover-link);
 }
