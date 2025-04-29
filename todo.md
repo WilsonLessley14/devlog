@@ -29,14 +29,6 @@
 
 ## Active TODOs
 
-### [ ] Add markdown-supported blog post functionality
-
-- **ID:** T002
-- **File:** src/routes/blog/
-- **Tags:** markdown, blog
-
----
-
 ### [ ] Showcase projects
 
 - **ID:** T003
@@ -61,7 +53,43 @@
 
 ---
 
-(Add new TODOs below using the template above)
+### [ ] Improve markdown styling
+
+- **ID:** T006
+- **File:** src/routes/blog/
+- **Tags:** markdown, styling
+
+---
+
+### [ ] Create widget for cat gallery to be used on home page
+
+- **ID:** T007
+- **File:** src/routes/cats/
+- **Tags:** widget, gallery, home
+
+---
+
+### [ ] Create widget for contributions to be used on home page
+
+- **ID:** T008
+- **File:** src/routes/contributions/
+- **Tags:** widget, contributions, home
+
+---
+
+### [ ] Create widget for blog to be used on home page
+
+- **ID:** T009
+- **File:** src/routes/blog/
+- **Tags:** widget, blog, home
+
+---
+
+### [ ] Improve contributions with contribution density visualization
+
+- **ID:** T010
+- **File:** src/routes/contributions/
+- **Tags:** contributions, visualization, density
 
 ---
 
@@ -74,3 +102,14 @@
 - **Tags:** svelte, frontend
 - **Related:**
 - **Completed:** 2025-04-27
+
+---
+
+### [x] Add markdown-supported blog post functionality
+
+- **ID:** T002
+- **File:** src/routes/blog/
+- **Tags:** markdown, blog
+- **Completed:** 2025-04-27
+
+---
