@@ -44,3 +44,9 @@ a:hover {
 	text-decoration: underline;
 	color: var(--hover-link);
 }
+
+h1 {
+	margin-bottom: 1rem;
+	font-size: 1.5rem;
+	font-weight: 600;
+}

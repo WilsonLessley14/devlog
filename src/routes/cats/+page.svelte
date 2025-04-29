@@ -15,7 +15,7 @@
 	<title>Cat Gallery</title>
 </svelte:head>
 
-<h1 class="mb-6 text-3xl font-bold">Cat Gallery</h1>
+<h1>Cat Gallery</h1>
 
 {#if images.length === 0}
 	<p>No cats found.</p>

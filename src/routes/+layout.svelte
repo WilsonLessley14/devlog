@@ -4,7 +4,7 @@
 	let links = [
 		{ href: '/', label: 'Home' },
 		{ href: '/blog', label: 'Blog' },
-		{ href: '/commit-log', label: 'Commit Log' },
+		{ href: '/contributions', label: 'Contributions' },
 		{ href: '/cats', label: 'Cats' }
 	];
 
