@@ -4,7 +4,8 @@
 	let links = [
 		{ href: '/', label: 'Home' },
 		{ href: '/blog', label: 'Blog' },
-		{ href: '/commit-log', label: 'Commit Log' }
+		{ href: '/commit-log', label: 'Commit Log' },
+		{ href: '/cats', label: 'Cats' }
 	];
 
 	let { children } = $props();
