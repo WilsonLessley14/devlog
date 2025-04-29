@@ -1,4 +1,5 @@
 import { env } from '$env/dynamic/private';
+import { apiRequest } from './apiService';
 
 /**
  * A single day's contribution count for a repository.
@@ -37,7 +38,8 @@ export async function fetchRecentContributionsByDay(
     }
   }`;
 	const variables = { login: username };
-	const res = await fetch('https://api.github.com/graphql', {
+
+	const data = await apiRequest<any>('https://api.github.com/graphql', {
 		method: 'POST',
 		headers: {
 			Authorization: `Bearer ${token}`,
@@ -45,8 +47,6 @@ export async function fetchRecentContributionsByDay(
 		},
 		body: JSON.stringify({ query, variables })
 	});
-	if (!res.ok) throw new Error(`GitHub GraphQL error: ${res.status}`);
-	const data = await res.json();
 	if (!data?.data?.user) throw new Error('No contribution data');
 	return extractContributionCountsFromGraphQL(data);
 }
