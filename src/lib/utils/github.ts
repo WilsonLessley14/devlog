@@ -1,53 +1,122 @@
+import { env } from '$env/dynamic/private';
+
 /**
- * A simplified representation of a GitHub commit entry.
+ * A single day's contribution count for a repository.
  */
-export interface CommitEntry {
-	message: string;
+export interface ContributionCountEntry {
 	repo: string;
-	timestamp: string;
+	date: string; // YYYY-MM-DD
+	count: number;
 }
 
 /**
- * Minimal subset of GitHub PushEvent fields needed for extracting commits.
+ * Fetch per-day contribution counts for each repository for a user using GitHub's GraphQL API.
+ * @param username GitHub username
+ * @returns Array of contribution count entries
+ * @throws Error on HTTP or API failure
  */
-interface GitHubPushEvent {
-	type: 'PushEvent';
-	payload: { commits: unknown[] };
-	repo: { name: string };
-	created_at: string;
+export async function fetchRecentContributionsByDay(
+	username: string
+): Promise<ContributionCountEntry[]> {
+	const token = env.GITHUB_FINE_GRAIN_ACCESS_TOKEN;
+	if (!token) throw new Error('GitHub token required');
+	const query = `
+  query($login: String!) {
+    user(login: $login) {
+      contributionsCollection {
+        commitContributionsByRepository(maxRepositories: 100) {
+          repository { nameWithOwner }
+          contributions(first: 100) {
+            nodes {
+              occurredAt
+              commitCount
+            }
+          }
+        }
+      }
+    }
+  }`;
+	const variables = { login: username };
+	const res = await fetch('https://api.github.com/graphql', {
+		method: 'POST',
+		headers: {
+			Authorization: `Bearer ${token}`,
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({ query, variables })
+	});
+	if (!res.ok) throw new Error(`GitHub GraphQL error: ${res.status}`);
+	const data = await res.json();
+	if (!data?.data?.user) throw new Error('No contribution data');
+	return extractContributionCountsFromGraphQL(data);
 }
 
 /**
- * Extract commit entries from a list of GitHub events.
- * @param events The array of GitHub events (unknowns).
- * @returns An array of commit entries with message, repo, and timestamp.
+ * Safely extracts the user object from a GraphQL response.
  */
-export function extractCommitEntries(events: unknown[]): CommitEntry[] {
-	return events.flatMap((e): CommitEntry[] => {
-		if (typeof e !== 'object' || e === null) return [];
-		const ev = e as GitHubPushEvent;
-		if (ev.type !== 'PushEvent' || !Array.isArray(ev.payload.commits)) return [];
-		return (ev.payload.commits as { message?: unknown }[]).flatMap((c) =>
-			typeof c.message === 'string'
-				? [{ message: c.message, repo: ev.repo.name, timestamp: ev.created_at }]
-				: []
-		);
+function extractUser(data: unknown): unknown | undefined {
+	if (!data || typeof data !== 'object') return undefined;
+	const d = (data as any).data;
+	if (!d || typeof d !== 'object' || !d.user || typeof d.user !== 'object') return undefined;
+	return d.user;
+}
+
+/**
+ * Safely extracts the contributionsCollection from a user object.
+ */
+function extractContributionsCollection(user: unknown): unknown | undefined {
+	if (!user || typeof user !== 'object') return undefined;
+	return 'contributionsCollection' in user &&
+		user.contributionsCollection &&
+		typeof user.contributionsCollection === 'object'
+		? user.contributionsCollection
+		: undefined;
+}
+
+/**
+ * Safely extracts the commitContributionsByRepository array from the contributionsCollection.
+ */
+function extractRepositoriesFromContributionsCollection(collection: unknown): unknown | undefined {
+	if (!collection || typeof collection !== 'object') return undefined;
+	return 'commitContributionsByRepository' in collection &&
+		collection.commitContributionsByRepository &&
+		Array.isArray(collection.commitContributionsByRepository)
+		? collection.commitContributionsByRepository
+		: undefined;
+}
+
+/**
+ * Extracts all ContributionCountEntry from the repo array.
+ */
+function extractRepoEntries(repos: unknown): ContributionCountEntry[] {
+	if (!Array.isArray(repos)) return [];
+	return repos.flatMap((repo: any) => {
+		const repoName = repo?.repository?.nameWithOwner;
+		const nodes = repo?.contributions?.nodes ?? [];
+		return (Array.isArray(nodes) ? nodes : []).flatMap((node: any) => {
+			if (!node || typeof node.occurredAt !== 'string' || typeof node.commitCount !== 'number')
+				return [];
+			return [{ repo: repoName, date: node.occurredAt.slice(0, 10), count: node.commitCount }];
+		});
 	});
 }
 
 /**
- * Fetch public GitHub events for a user, using optional token from env.
- * @param username GitHub username.
- * @returns Array of raw event objects.
- * @throws Error on HTTP failure.
+ * Sorts ContributionCountEntry array by date descending (newest first).
  */
-export async function fetchUserEvents(username: string): Promise<unknown[]> {
-	const token = process.env.GITHUB_FINE_GRAIN_ACCESS_TOKEN;
-	const headers: Record<string, string> = {};
-	if (token) headers.Authorization = `token ${token}`;
-	const res = await fetch(`https://api.github.com/users/${username}/events/public`, { headers });
-	if (!res.ok) {
-		throw new Error(`Failed to fetch GitHub events: ${res.status}`);
-	}
-	return (await res.json()) as unknown[];
+function sortEntriesDescending(entries: ContributionCountEntry[]): ContributionCountEntry[] {
+	return [...entries].sort((a, b) => b.date.localeCompare(a.date));
+}
+
+/**
+ * Extracts per-day contribution counts for each repository from GraphQL API response.
+ * @param data Raw GraphQL response
+ * @returns Array of contribution count entries
+ */
+export function extractContributionCountsFromGraphQL(data: unknown): ContributionCountEntry[] {
+	const user = extractUser(data);
+	const collection = extractContributionsCollection(user);
+	const repos = extractRepositoriesFromContributionsCollection(collection);
+	const entries = extractRepoEntries(repos);
+	return sortEntriesDescending(entries);
 }

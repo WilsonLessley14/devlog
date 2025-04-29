@@ -1,18 +1,21 @@
 <script lang="ts">
-	export let data: { commits: Array<{ message: string; repo: string; timestamp: string }> };
+	/**
+	 * Data prop: array of per-day contribution counts per repo.
+	 */
+	export let data: { contributions: Array<{ repo: string; date: string; count: number }> };
 </script>
 
 <svelte:head>
 	<title>Commit Log</title>
 </svelte:head>
 
-<h1 class="mb-4 text-2xl font-bold">Recent Commits</h1>
+<h1 class="mb-4 text-2xl font-bold">Contributions by Repository and Day</h1>
 <ul>
-	{#each data.commits as commit}
+	{#each data.contributions as entry (entry.repo + entry.date)}
 		<li class="mb-2">
-			<p class="font-semibold">{commit.message}</p>
-			<p class="text-sm text-gray-600">Repo: {commit.repo}</p>
-			<p class="text-sm text-gray-600">Pushed at: {new Date(commit.timestamp).toLocaleString()}</p>
+			<p class="font-semibold">{entry.repo}</p>
+			<p class="text-sm text-gray-600">Date: {entry.date}</p>
+			<p class="text-sm text-gray-600">Commits: {entry.count}</p>
 		</li>
 	{/each}
 </ul>

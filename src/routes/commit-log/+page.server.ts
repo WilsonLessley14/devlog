@@ -1,15 +1,14 @@
 import type { PageServerLoad } from './$types';
-import type { CommitEntry } from '$lib/utils/github';
-import { extractCommitEntries, fetchUserEvents } from '$lib/utils/github';
+import type { ContributionCountEntry } from '$lib/utils/github';
+import { fetchRecentContributionsByDay } from '$lib/utils/github';
 
 /**
- * Fetches the user's recent GitHub commits via public events and returns a list of commits.
- * @returns An object containing an array of commit entries with message, repo, and timestamp.
- * @throws Error if the GitHub events cannot be fetched.
+ * Fetches the user's per-day contribution counts for each repository.
+ * @returns An object containing an array of contribution count entries.
+ * @throws Error if the GitHub API cannot be fetched.
  */
 export const load: PageServerLoad = async () => {
 	const username = 'WilsonLessley14';
-	const events = await fetchUserEvents(username);
-	const commits: CommitEntry[] = extractCommitEntries(events);
-	return { commits };
+	const contributions: ContributionCountEntry[] = await fetchRecentContributionsByDay(username);
+	return { contributions };
 };
