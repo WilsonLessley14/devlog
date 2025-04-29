@@ -3,8 +3,11 @@ module.exports = {
 		extend: {
 			colors: {
 				bg: 'var(--bg)',
-				fg: 'var(--fg)',
-				brand: 'var(--brand)'
+				text: 'var(--text)',
+				subtext: 'var(--subtext)',
+				brand: 'var(--brand)',
+				link: 'var(--link)',
+				hoverLink: 'var(--hover-link)'
 			}
 		}
 	}

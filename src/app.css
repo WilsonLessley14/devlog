@@ -2,7 +2,8 @@
 
 [data-theme='light'] {
 	--bg: #fcf8e3;
-	--fg: #333333;
+	--text: #333333;
+	--subtext: #666666;
 	--brand: #826ef1;
 	--link: #324abf;
 	--hover-link: #2537b6;
@@ -10,10 +11,20 @@
 
 [data-theme='dark'] {
 	--bg: #333333;
-	--fg: #fcf8e3;
+	--text: #fcf8e3;
+	--subtext: #c1c1c1;
 	--brand: #1b0a7d;
 	--link: #6e84f1;
 	--hover-link: #556ce6;
+}
+
+@theme {
+	--color-bg: var(--bg);
+	--color-text: var(--text);
+	--color-subtext: var(--subtext);
+	--color-brand: var(--brand);
+	--color-link: var(--link);
+	--color-hover-link: var(--hover-link);
 }
 
 nav {
@@ -22,7 +33,7 @@ nav {
 
 body {
 	background-color: var(--bg);
-	color: var(--fg);
+	color: var(--text);
 }
 
 a {

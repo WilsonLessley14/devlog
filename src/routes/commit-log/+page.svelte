@@ -14,8 +14,8 @@
 	{#each data.contributions as entry (entry.repo + entry.date)}
 		<li class="mb-2">
 			<p class="font-semibold">{entry.repo}</p>
-			<p class="text-sm text-gray-600">Date: {entry.date}</p>
-			<p class="text-sm text-gray-600">Commits: {entry.count}</p>
+			<p class="text-subtext text-sm">Date: {entry.date}</p>
+			<p class="text-subtext text-sm">Commits: {entry.count}</p>
 		</li>
 	{/each}
 </ul>
