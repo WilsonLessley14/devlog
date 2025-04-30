@@ -55,6 +55,7 @@
 	},
 	"dependencies": {
 		"@types/marked": "^5.0.2",
+		"jest": "^29.7.0",
 		"marked": "^15.0.11"
 	}
 }

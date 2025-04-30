@@ -40,8 +40,8 @@ describe('fetchRecentContributionsByDay', () => {
 		const contributions = await fetchRecentContributionsByDay('foo');
 		expect(contributions).toEqual([
 			{ repo: 'owner/repo1', date: '2025-04-29', count: 2 },
-			{ repo: 'owner/repo1', date: '2025-04-28', count: 1 },
-			{ repo: 'owner/repo2', date: '2025-04-29', count: 3 }
+			{ repo: 'owner/repo2', date: '2025-04-29', count: 3 },
+			{ repo: 'owner/repo1', date: '2025-04-28', count: 1 }
 		]);
 		global.fetch = origFetch;
 	});
@@ -61,8 +61,8 @@ describe('extractContributionCountsFromGraphQL', () => {
 		const result = extractContributionCountsFromGraphQL(mockGraphQLResponse);
 		expect(result).toEqual([
 			{ repo: 'owner/repo1', date: '2025-04-29', count: 2 },
-			{ repo: 'owner/repo1', date: '2025-04-28', count: 1 },
-			{ repo: 'owner/repo2', date: '2025-04-29', count: 3 }
+			{ repo: 'owner/repo2', date: '2025-04-29', count: 3 },
+			{ repo: 'owner/repo1', date: '2025-04-28', count: 1 }
 		]);
 	});
 });
