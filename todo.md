@@ -37,14 +37,6 @@
 
 ---
 
-### [ ] Add playable POC games
-
-- **ID:** T004
-- **File:** src/routes/games/
-- **Tags:** games, poc
-
----
-
 ### [ ] Deploy site
 
 - **ID:** T005
@@ -110,6 +102,15 @@
 - **ID:** T002
 - **File:** src/routes/blog/
 - **Tags:** markdown, blog
+- **Completed:** 2025-04-27
+
+---
+
+### [x] Add playable POC games
+
+- **ID:** T004
+- **File:** src/routes/games/
+- **Tags:** games, poc
 - **Completed:** 2025-04-27
 
 ---
