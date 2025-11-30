@@ -85,26 +85,6 @@ clean-install:
     rm -rf node_modules package-lock.json
     npm install
 
-# Git
-# ===
-
-# Show git status
-status:
-    git status
-
-# Create a new git commit (requires message)
-commit message:
-    git add .
-    git commit -m "{{message}}"
-
-# Push to remote
-push:
-    git push
-
-# Pull from remote
-pull:
-    git pull
-
 # Utility
 # =======
 

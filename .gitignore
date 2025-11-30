@@ -30,3 +30,6 @@ package-lock.json
 .devenv/
 yarn.lock
 .devenv.flake.nix
+
+# Claude Code
+.claude/settings.local.json

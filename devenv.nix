@@ -38,6 +38,11 @@
   '';
 
   enterShell = ''
+    # Install beads if not already available
+    if ! command -v bd &> /dev/null; then
+      echo "Installing Beads issue tracker..."
+      npm install -g @beads/bd
+    fi
     hello
   '';
 
