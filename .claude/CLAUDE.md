@@ -175,3 +175,4 @@ Personal portfolio and blog built with SvelteKit 2.16, Svelte 5.0, TypeScript, a
 - **License**: MIT
 - **Environment**: Nix + devenv for reproducible development
 - **Node Version**: 22 (managed by devenv)
+- create unit tests for any new component created within the design-system
