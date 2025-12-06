@@ -1,58 +1,65 @@
 {
-  "permissions": {
-    "allow": [
-      "Bash(git -C /Users/wlessley/Projects/devlog log --oneline -20)",
-      "Bash(just dev*)",
-      "Bash(just test*)",
-      "Bash(just storybook*)",
-      "Bash(just build)",
-      "Bash(just preview)",
-      "Bash(just lint)",
-      "Bash(just format)",
-      "Bash(just check*)",
-      "Bash(just outdated)",
-      "Bash(just info)",
-      "Bash(npm --version:*)",
-      "Bash(bd list*)",
-      "Bash(bd show*)",
-      "Bash(bd search*)",
-      "Bash(bd status*)",
-      "Bash(bd tree*)",
-      "Bash(bd log*)",
-      "Bash(bd prime*)",
-      "Bash(bd doctor*)"
-    ],
-    "deny": [
-      "Read(.env*)",
-      "Read(**/.env*)",
-      "Read(node_modules/**/*)",
-      "Write(.env*)",
-      "Bash(rm -rf *)",
-      "Bash(just clean-all)",
-      "Bash(git push --force:*)"
-    ],
-    "ask": [
-      "Bash(npm install*)",
-      "Bash(just install)",
-      "Bash(just update)",
-      "Bash(just clean*)",
-      "Bash(git push*)",
-      "Bash(bd new*)",
-      "Bash(bd edit*)",
-      "Bash(bd close*)",
-      "Bash(bd delete*)",
-      "Bash(bd assign*)",
-      "Bash(bd tag*)"
-    ]
-  },
-  "env": {
-    "NODE_ENV": "development"
-  },
-  "hooks": {
-    "PostToolUse": {
-      "Write": "npx prettier --write $FILE_PATH 2>/dev/null || true",
-      "Edit": "npx prettier --write $FILE_PATH 2>/dev/null || true"
-    }
-  },
-  "alwaysThinkingEnabled": true
+	"permissions": {
+		"allow": [
+			"Bash(git -C /Users/wlessley/Projects/devlog log --oneline -20)",
+			"Bash(just dev:*)",
+			"Bash(just test:*)",
+			"Bash(just storybook:*)",
+			"Bash(just build)",
+			"Bash(just preview)",
+			"Bash(just lint)",
+			"Bash(just format)",
+			"Bash(just check:*)",
+			"Bash(just outdated)",
+			"Bash(just info)",
+			"Bash(npm --version:*)",
+			"Bash(bd list:*)",
+			"Bash(bd show:*)",
+			"Bash(bd search:*)",
+			"Bash(bd status:*)",
+			"Bash(bd tree:*)",
+			"Bash(bd log:*)",
+			"Bash(bd prime:*)",
+			"Bash(bd doctor:*)"
+		],
+		"deny": [
+			"Read(.env*)",
+			"Read(**/.env*)",
+			"Read(node_modules/**/*)",
+			"Write(.env*)",
+			"Bash(rm -rf :*)",
+			"Bash(just clean-all)",
+			"Bash(git push --force:*)"
+		],
+		"ask": [
+			"Bash(npm install:*)",
+			"Bash(just install)",
+			"Bash(just update)",
+			"Bash(just clean:*)",
+			"Bash(git push:*)",
+			"Bash(bd new:*)",
+			"Bash(bd edit:*)",
+			"Bash(bd close:*)",
+			"Bash(bd delete:*)",
+			"Bash(bd assign:*)",
+			"Bash(bd tag:*)"
+		]
+	},
+	"env": {
+		"NODE_ENV": "development"
+	},
+	"hooks": {
+		"PostToolUse": [
+			{
+				"matcher": "(Write|Edit)",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "cat | jq -r '.tool_input.file_path // empty' | xargs -r npx prettier --write 2>/dev/null || true"
+					}
+				]
+			}
+		]
+	},
+	"alwaysThinkingEnabled": true
 }
