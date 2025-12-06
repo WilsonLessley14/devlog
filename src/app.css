@@ -86,8 +86,9 @@
 	--color-border-hover: var(--border-hover);
 
 	/* Typography */
-	--font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
-		Arial, sans-serif;
+	--font-sans:
+		system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+		sans-serif;
 	--font-mono: 'Fira Code', 'Cascadia Code', Consolas, 'Courier New', monospace;
 
 	--font-size-xs: 0.75rem; /* 12px */
