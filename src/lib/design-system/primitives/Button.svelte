@@ -2,17 +2,7 @@
 	import type { Snippet } from 'svelte';
 	import type { ButtonVariant, Size } from '../tokens';
 	import { classNames } from '../utils';
-
-	interface Props {
-		variant?: ButtonVariant;
-		size?: Size;
-		disabled?: boolean;
-		loading?: boolean;
-		type?: 'button' | 'submit' | 'reset';
-		ariaLabel?: string;
-		onclick?: (event: MouseEvent) => void;
-		children?: Snippet;
-	}
+  import type { ButtonProps } from './ButtonProps.ts'
 
 	let {
 		variant = 'primary',
@@ -23,7 +13,7 @@
 		ariaLabel,
 		onclick,
 		children
-	}: Props = $props();
+	}: ButtonProps = $props();
 
 	const baseClasses =
 		'inline-flex items-center justify-center font-medium transition-all duration-base rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';

@@ -1,31 +1,41 @@
 <script module>
 	import { defineMeta } from '@storybook/addon-svelte-csf';
-	import Button from './Button.svelte';
+	import ButtonTestWrapper from '../lib/design-system/primitives/ButtonTestWrapper.svelte';
 	import { fn } from '@storybook/test';
 
 	// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 	const { Story } = defineMeta({
-		title: 'Example/Button',
-		component: Button,
+		title: 'Primitive/Button',
+		component: ButtonTestWrapper,
 		tags: ['autodocs'],
 		argTypes: {
-			backgroundColor: { control: 'color' },
+			variant: {
+				control: { type: 'select' },
+				options: ['primary', 'secondary', 'ghost']
+			},
 			size: {
 				control: { type: 'select' },
-				options: ['small', 'medium', 'large']
+				options: ['sm', 'md', 'lg']
 			}
 		},
 		args: {
-			onClick: fn()
+			onclick: fn()
 		}
 	});
 </script>
 
-<!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
-<Story name="Primary" args={{ primary: true, label: 'Button' }} />
+<Story name="Primary" args={{ text: 'Primary Button', variant: 'primary', ariaLabel: 'Primary Button' }} />
 
-<Story name="Secondary" args={{ label: 'Button' }} />
+<Story name="Secondary" args={{ text: 'Secondary Button', variant: 'secondary', ariaLabel: 'Secondary Button' }} />
 
-<Story name="Large" args={{ size: 'large', label: 'Button' }} />
+<Story name="Ghost" args={{ text: 'Ghost Button', variant: 'ghost', ariaLabel: 'Ghost Button' }} />
 
-<Story name="Small" args={{ size: 'small', label: 'Button' }} />
+<Story name="Large" args={{ text: 'Large Button', size: 'lg', ariaLabel: 'Large Button' }} />
+
+<Story name="Medium" args={{ text: 'Medium Button', size: 'md', ariaLabel: 'Medium Button' }} />
+
+<Story name="Small" args={{ text: 'Small Button', size: 'sm', ariaLabel: 'Small Button' }} />
+
+<Story name="Loading" args={{ text: 'Loading...', loading: true, ariaLabel: 'Loading Button' }} />
+
+<Story name="Disabled" args={{ text: 'Disabled', disabled: true, ariaLabel: 'Disabled Button' }} />
