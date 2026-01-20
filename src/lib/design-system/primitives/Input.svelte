@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { InputType, Size } from '../tokens';
 	import { classNames } from '../utils';
+	import type { HTMLInputAttributes } from 'svelte/elements';
 
 	interface Props {
 		type?: InputType;
@@ -18,7 +19,7 @@
 		name?: string;
 		ariaLabel?: string;
 		ariaDescribedBy?: string;
-		autocomplete?: string;
+		autocomplete?: HTMLInputAttributes['autocomplete'];
 		oninput?: (event: Event) => void;
 		onchange?: (event: Event) => void;
 		onfocus?: (event: FocusEvent) => void;
