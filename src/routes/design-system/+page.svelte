@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button, Input, Text } from '$lib/design-system';
+	import { Button, Card, Input, Text } from '$lib/design-system';
 
 	// State for interactive demos
 	let inputValue = $state('');
@@ -43,11 +43,9 @@
 				<Button variant="secondary">Secondary</Button>
 				<Button variant="ghost">Ghost</Button>
 			</div>
-			<div class="bg-surface border-border mt-4 rounded-md border p-4">
-				<code class="text-subtext font-mono text-sm">
-					{'<Button variant="primary">Primary</Button>'}
-				</code>
-			</div>
+			<Card variant="code" class="mt-4">
+				{'<Button variant="primary">Primary</Button>'}
+			</Card>
 		</div>
 
 		<!-- Sizes -->
@@ -58,11 +56,9 @@
 				<Button size="md">Medium</Button>
 				<Button size="lg">Large</Button>
 			</div>
-			<div class="bg-surface border-border mt-4 rounded-md border p-4">
-				<code class="text-subtext font-mono text-sm">
-					{'<Button size="sm">Small</Button>'}
-				</code>
-			</div>
+			<Card variant="code" class="mt-4">
+				{'<Button size="sm">Small</Button>'}
+			</Card>
 		</div>
 
 		<!-- States -->
@@ -73,11 +69,9 @@
 				<Button variant="primary" disabled>Disabled</Button>
 				<Button variant="primary" loading>Loading</Button>
 			</div>
-			<div class="bg-surface border-border mt-4 rounded-md border p-4">
-				<code class="text-subtext font-mono text-sm">
-					{'<Button disabled>Disabled</Button>'}
-				</code>
-			</div>
+			<Card variant="code" class="mt-4">
+				{'<Button disabled>Disabled</Button>'}
+			</Card>
 		</div>
 
 		<!-- All Combinations -->
@@ -203,11 +197,9 @@
 				<Text size="sm">sm - Small Text</Text>
 				<Text size="xs">xs - Extra Small Text</Text>
 			</div>
-			<div class="bg-surface border-border mt-4 rounded-md border p-4">
-				<code class="text-subtext font-mono text-sm">
-					{'<Text size="2xl">Section Heading</Text>'}
-				</code>
-			</div>
+			<Card variant="code" class="mt-4">
+				{'<Text size="2xl">Section Heading</Text>'}
+			</Card>
 		</div>
 
 		<!-- Weights -->
@@ -262,11 +254,9 @@
 				<Text as="span">span - Inline text element</Text>
 				<Text as="label">label - Form label element</Text>
 			</div>
-			<div class="bg-surface border-border mt-4 rounded-md border p-4">
-				<code class="text-subtext font-mono text-sm">
-					{'<Text as="h1" size="4xl">Page Title</Text>'}
-				</code>
-			</div>
+			<Card variant="code" class="mt-4">
+				{'<Text as="h1" size="4xl">Page Title</Text>'}
+			</Card>
 		</div>
 
 		<!-- Special Features -->
@@ -321,11 +311,9 @@
 					bind:value={searchValue}
 				/>
 			</div>
-			<div class="bg-surface border-border mt-4 rounded-md border p-4">
-				<code class="text-subtext font-mono text-sm">
-					{'<Input type="email" label="Email" placeholder="email@example.com" />'}
-				</code>
-			</div>
+			<Card variant="code" class="mt-4">
+				{'<Input type="email" label="Email" placeholder="email@example.com" />'}
+			</Card>
 		</div>
 
 		<!-- Sizes -->
@@ -359,11 +347,9 @@
 				<Input label="Readonly" value="Read-only value" readonly />
 				<Input label="Required Field" placeholder="This field is required" required />
 			</div>
-			<div class="bg-surface border-border mt-4 rounded-md border p-4">
-				<code class="text-subtext font-mono text-sm">
-					{'<Input error errorMessage="Invalid input" />'}
-				</code>
-			</div>
+			<Card variant="code" class="mt-4">
+				{'<Input error errorMessage="Invalid input" />'}
+			</Card>
 		</div>
 
 		<!-- With Labels and Helper Text -->
@@ -388,6 +374,106 @@
 		</div>
 	</section>
 
+	<!-- Card Section -->
+	<section class="mb-16">
+		<Text as="h2" variant="heading" size="2xl" class="border-border mb-6 border-b pb-2">Card</Text>
+
+		<Text variant="body" class="mb-6">
+			Cards are container components for grouping related content. They come in two variants:
+			content cards for general information and code cards for displaying code snippets.
+		</Text>
+
+		<!-- Content Variant -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Content Variant</Text>
+			<Text variant="body" color="subtext" class="mb-4">
+				Use content cards to group related information with an optional title. They have rounded
+				corners, padding, and a subtle border.
+			</Text>
+			<div class="space-y-4">
+				<Card variant="content">
+					{#snippet title()}
+						<Text as="h3" variant="heading" size="lg">Card with Title</Text>
+					{/snippet}
+					<Text variant="body" color="subtext">
+						This card has a title and body content. The title snippet allows for custom heading
+						elements and styling.
+					</Text>
+				</Card>
+
+				<Card variant="content">
+					<Text variant="body" color="subtext">
+						This card has no title - just body content. Useful for simple informational blocks or
+						when the context is clear from surrounding content.
+					</Text>
+				</Card>
+			</div>
+			<Card variant="code" class="mt-4">
+				{'<Card variant="content">{#snippet title()}<Text>Title</Text>{/snippet}Body content</Card>'}
+			</Card>
+		</div>
+
+		<!-- Code Variant -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Code Variant</Text>
+			<Text variant="body" color="subtext" class="mb-4">
+				Code cards are styled for displaying code snippets. They use a monospace font and
+				appropriate styling for code examples.
+			</Text>
+			<div class="space-y-4">
+				<Card variant="code">
+					{'<Button variant="primary">Click me</Button>'}
+				</Card>
+
+				<Card variant="code">
+					{"import { Button, Card, Text } from '$lib/design-system';"}
+				</Card>
+			</div>
+			<Card variant="code" class="mt-4">
+				{'<Card variant="code">{\'code snippet here\'}</Card>'}
+			</Card>
+		</div>
+
+		<!-- Grid Layout -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Grid Layout</Text>
+			<Text variant="body" color="subtext" class="mb-4">
+				Cards work well in grid layouts for displaying related items side by side.
+			</Text>
+			<div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+				<Card variant="content">
+					{#snippet title()}
+						<Text as="h3" variant="heading" size="base">Feature One</Text>
+					{/snippet}
+					<Text variant="body" color="subtext" size="sm">
+						A brief description of the first feature or item.
+					</Text>
+				</Card>
+
+				<Card variant="content">
+					{#snippet title()}
+						<Text as="h3" variant="heading" size="base">Feature Two</Text>
+					{/snippet}
+					<Text variant="body" color="subtext" size="sm">
+						A brief description of the second feature or item.
+					</Text>
+				</Card>
+
+				<Card variant="content">
+					{#snippet title()}
+						<Text as="h3" variant="heading" size="base">Feature Three</Text>
+					{/snippet}
+					<Text variant="body" color="subtext" size="sm">
+						A brief description of the third feature or item.
+					</Text>
+				</Card>
+			</div>
+			<Card variant="code" class="mt-4">
+				{'<div class="grid gap-4 md:grid-cols-2"><Card>...</Card><Card>...</Card></div>'}
+			</Card>
+		</div>
+	</section>
+
 	<!-- Usage Guidelines -->
 	<section class="mb-16">
 		<Text as="h2" variant="heading" size="2xl" class="border-border mb-6 border-b pb-2">
@@ -395,36 +481,44 @@
 		</Text>
 
 		<div class="grid gap-6 md:grid-cols-2">
-			<div class="bg-surface border-border rounded-lg border p-6">
-				<Text as="h3" variant="heading" size="lg" class="mb-3">Accessibility</Text>
+			<Card variant="content">
+				{#snippet title()}
+					<Text as="h3" variant="heading" size="lg">Accessibility</Text>
+				{/snippet}
 				<Text variant="body" color="subtext">
 					All components include proper ARIA attributes, keyboard navigation, and focus management.
 					Always provide meaningful labels for form inputs.
 				</Text>
-			</div>
+			</Card>
 
-			<div class="bg-surface border-border rounded-lg border p-6">
-				<Text as="h3" variant="heading" size="lg" class="mb-3">Theming</Text>
+			<Card variant="content">
+				{#snippet title()}
+					<Text as="h3" variant="heading" size="lg">Theming</Text>
+				{/snippet}
 				<Text variant="body" color="subtext">
 					Components automatically adapt to light and dark modes using CSS custom properties. Use
 					the theme toggle in the navigation to preview both modes.
 				</Text>
-			</div>
+			</Card>
 
-			<div class="bg-surface border-border rounded-lg border p-6">
-				<Text as="h3" variant="heading" size="lg" class="mb-3">Importing</Text>
+			<Card variant="content">
+				{#snippet title()}
+					<Text as="h3" variant="heading" size="lg">Importing</Text>
+				{/snippet}
 				<Text variant="body" color="subtext" class="font-mono text-sm">
 					{"import { Button, Input, Text } from '$lib/design-system';"}
 				</Text>
-			</div>
+			</Card>
 
-			<div class="bg-surface border-border rounded-lg border p-6">
-				<Text as="h3" variant="heading" size="lg" class="mb-3">Consistency</Text>
+			<Card variant="content">
+				{#snippet title()}
+					<Text as="h3" variant="heading" size="lg">Consistency</Text>
+				{/snippet}
 				<Text variant="body" color="subtext">
 					Use design system primitives instead of raw HTML elements to ensure visual and behavioral
 					consistency across the application.
 				</Text>
-			</div>
+			</Card>
 		</div>
 	</section>
 </main>
