@@ -33,6 +33,3 @@ yarn.lock
 
 # Claude Code
 .claude/settings.local.json
-
-# Editor configs
-.nvim.lua
