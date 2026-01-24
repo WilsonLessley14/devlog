@@ -27,3 +27,5 @@ export type ColorToken =
 	| 'info'
 	| 'bg'
 	| 'surface';
+
+export type CardVariant = 'content' | 'code';

@@ -29,6 +29,28 @@ Personal portfolio and blog built with SvelteKit 2.16, Svelte 5.0, TypeScript, a
 - `/src/lib/utils/` - Utility functions (GitHub API, HTTP service)
 - `/src/stories/` - Storybook component stories
 - `/src/app.css` - Global styles and theme variables
+- `/src/lib/design-system/` - Design system primitives (Button, Text, Input, Card)
+
+## Design System
+
+The project has a custom design system with reusable primitive components.
+
+- **Location**: `/src/lib/design-system/primitives/`
+- **Components**: Button, Text, Input, Card
+- **Showcase**: Live documentation at `/design-system` route
+- **Storybook**: Component stories in `/src/stories/`
+
+### Creating New Components
+
+See `.claude/skills/design-system-component.md` for the complete workflow:
+
+1. Create component + props interface
+2. Export from design system index
+3. Write unit tests (`.svelte.spec.ts`)
+4. Create Storybook stories
+5. Add section to showcase page
+6. Validate with `just check`, `just lint`, `just test`
+7. Verify visually with Browser MCP
 
 ## Development Workflow
 
