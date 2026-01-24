@@ -2,7 +2,7 @@
 	import type { Snippet } from 'svelte';
 	import type { ButtonVariant, Size } from '../tokens';
 	import { classNames } from '../utils';
-  import type { ButtonProps } from './ButtonProps.ts'
+	import type { ButtonProps } from './ButtonProps.ts';
 
 	let {
 		variant = 'primary',
@@ -20,7 +20,7 @@
 
 	const variantClasses: Record<ButtonVariant, string> = {
 		primary:
-			'bg-brand text-bg hover:opacity-90 focus:ring-brand active:scale-95 border border-transparent',
+			'bg-brand text-white hover:opacity-90 focus:ring-brand active:scale-95 border border-transparent',
 		secondary:
 			'bg-surface text-text border border-border hover:bg-surfaceHover hover:border-borderHover focus:ring-brand active:scale-95',
 		ghost:
