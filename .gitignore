@@ -37,3 +37,18 @@ yarn.lock
 
 # personal notes file
 notes.md
+
+# Beads: runtime and tracking files
+.beads/*.db
+.beads/*.db-shm
+.beads/*.db-wal
+.beads/daemon.pid
+.beads/daemon.lock
+.beads/daemon.log
+.beads/daemon.sock
+.beads/last-touched
+.beads/sync-state.json
+.beads/.sync.lock
+.beads/sync_base.jsonl
+.beads/*.jsonl[0-9]
+
