@@ -137,12 +137,15 @@ CRITICAL: You must ACTUALLY IMPLEMENT the code, not just provide plans, proposal
 
 The Meta Agent (coordinator) is responsible for:
 
-1. Creating clear, detailed task descriptions
-2. Spawning Code Agents with proper directives
-3. Reviewing completed work
-4. Managing task status and dependencies
-5. Handling version control operations (commits, pushes)
-6. Coordinating between multiple agents when needed
+1. **Pre-spawn verification** - Check if work already exists before spawning agents (see `.claude/skills/spawning-agents.md`)
+2. Creating clear, detailed task descriptions
+3. Spawning Code Agents with proper directives
+4. Reviewing completed work
+5. Managing task status and dependencies
+6. Handling version control operations (commits, pushes)
+7. Coordinating between multiple agents when needed
+
+**IMPORTANT**: Before spawning any agent, do a quick check (grep/ls) to verify the work isn't already done. This prevents wasted tokens on redundant verification.
 
 ## Version Control Workflow
 
