@@ -12,6 +12,6 @@ export async function loadGameComponent(
 	if (!match) {
 		throw new Error(`Game not found: ${gameName}`);
 	}
-	const module = await match[1]();
+	const module = (await match[1]()) as { default: typeof import('svelte').SvelteComponent };
 	return module.default;
 }

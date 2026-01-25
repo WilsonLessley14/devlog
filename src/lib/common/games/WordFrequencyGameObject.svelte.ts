@@ -77,7 +77,7 @@ export class WordFrequencyGameObject {
 	private async setRoundFrequencies() {
 		try {
 			[this.round.freq1, this.round.freq2] = await this.getRoundFrequencies();
-		} catch (e) {
+		} catch {
 			this.round.freq1 = this.round.freq2 = null;
 		}
 	}

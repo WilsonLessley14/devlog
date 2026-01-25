@@ -26,7 +26,7 @@ const getBlogPostsOrThrow = async (dir: string): Promise<string[]> => {
  * @returns {Promise<{ posts: string[] }>} An object containing an array of blog post filenames.
  * @throws {Error} If the directory cannot be read.
  */
-export const load: PageServerLoad = async (_event) => {
+export const load: PageServerLoad = async () => {
 	const blogDir = path.resolve('src/lib/blogposts');
 	return { posts: await getBlogPostsOrThrow(blogDir) };
 };

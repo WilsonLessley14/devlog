@@ -20,6 +20,7 @@
 	});
 </script>
 
+<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 <nav><a href="/games">← All Games</a></nav>
 <h1>{data.game}</h1>
 {#if loadError}

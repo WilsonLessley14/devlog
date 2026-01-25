@@ -39,6 +39,7 @@ export async function fetchRecentContributionsByDay(
   }`;
 	const variables = { login: username };
 
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const data = await apiRequest<any>('https://api.github.com/graphql', {
 		method: 'POST',
 		headers: {
@@ -56,6 +57,7 @@ export async function fetchRecentContributionsByDay(
  */
 function extractUser(data: unknown): unknown | undefined {
 	if (!data || typeof data !== 'object') return undefined;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const d = (data as any).data;
 	if (!d || typeof d !== 'object' || !d.user || typeof d.user !== 'object') return undefined;
 	return d.user;
@@ -90,9 +92,11 @@ function extractRepositoriesFromContributionsCollection(collection: unknown): un
  */
 function extractRepoEntries(repos: unknown): ContributionCountEntry[] {
 	if (!Array.isArray(repos)) return [];
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	return repos.flatMap((repo: any) => {
 		const repoName = repo?.repository?.nameWithOwner;
 		const nodes = repo?.contributions?.nodes ?? [];
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		return (Array.isArray(nodes) ? nodes : []).flatMap((node: any) => {
 			if (!node || typeof node.occurredAt !== 'string' || typeof node.commitCount !== 'number')
 				return [];

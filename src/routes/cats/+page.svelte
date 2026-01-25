@@ -5,10 +5,12 @@
 		{ eager: true }
 	);
 	// Convert to array of { src, name }
+	/* eslint-disable @typescript-eslint/no-explicit-any */
 	const images = Object.entries(imageModules).map(([path, module]) => ({
 		src: (module as any).default,
 		name: path.split('/').pop()
 	}));
+	/* eslint-enable @typescript-eslint/no-explicit-any */
 </script>
 
 <svelte:head>
@@ -21,7 +23,7 @@
 	<p>No cats found.</p>
 {:else}
 	<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-		{#each images as image}
+		{#each images as image (image.name)}
 			<div class="aspect-w-1 aspect-h-1 overflow-hidden rounded shadow">
 				<img
 					src={image.src}

@@ -24,9 +24,15 @@
 	});
 </script>
 
-<Story name="Primary" args={{ text: 'Primary Button', variant: 'primary', ariaLabel: 'Primary Button' }} />
+<Story
+	name="Primary"
+	args={{ text: 'Primary Button', variant: 'primary', ariaLabel: 'Primary Button' }}
+/>
 
-<Story name="Secondary" args={{ text: 'Secondary Button', variant: 'secondary', ariaLabel: 'Secondary Button' }} />
+<Story
+	name="Secondary"
+	args={{ text: 'Secondary Button', variant: 'secondary', ariaLabel: 'Secondary Button' }}
+/>
 
 <Story name="Ghost" args={{ text: 'Ghost Button', variant: 'ghost', ariaLabel: 'Ghost Button' }} />
 

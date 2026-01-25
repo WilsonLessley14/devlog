@@ -1,4 +1,10 @@
 import { describe, it, expect, vi } from 'vitest';
+
+// Mock the SvelteKit env module
+vi.mock('$env/dynamic/private', () => ({
+	env: { GITHUB_FINE_GRAIN_ACCESS_TOKEN: 'mock-token' }
+}));
+
 import { fetchRecentContributionsByDay, extractContributionCountsFromGraphQL } from './github';
 
 const mockGraphQLResponse = {
@@ -35,7 +41,6 @@ describe('fetchRecentContributionsByDay', () => {
 		});
 		// Patch global fetch for this test
 		const origFetch = global.fetch;
-		// @ts-ignore
 		global.fetch = fetchMock;
 		const contributions = await fetchRecentContributionsByDay('foo');
 		expect(contributions).toEqual([
@@ -49,7 +54,6 @@ describe('fetchRecentContributionsByDay', () => {
 	it('throws if GitHub returns error', async () => {
 		const fetchMock = vi.fn().mockResolvedValue({ ok: false, status: 403 });
 		const origFetch = global.fetch;
-		// @ts-ignore
 		global.fetch = fetchMock;
 		await expect(fetchRecentContributionsByDay('foo')).rejects.toThrow();
 		global.fetch = origFetch;

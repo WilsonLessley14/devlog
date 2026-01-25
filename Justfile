@@ -111,3 +111,5 @@ info:
 
 # Development workflow - clean, install, and start dev server
 fresh: clean-install dev
+
+validate: lint check test

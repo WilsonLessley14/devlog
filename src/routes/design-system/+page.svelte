@@ -44,7 +44,7 @@
 				<Button variant="ghost">Ghost</Button>
 			</div>
 			<Card variant="code" class="mt-4">
-				{'<Button variant="primary">Primary</Button>'}
+				&lt;Button variant="primary"&gt;Primary&lt;/Button&gt;
 			</Card>
 		</div>
 
@@ -56,9 +56,7 @@
 				<Button size="md">Medium</Button>
 				<Button size="lg">Large</Button>
 			</div>
-			<Card variant="code" class="mt-4">
-				{'<Button size="sm">Small</Button>'}
-			</Card>
+			<Card variant="code" class="mt-4">&lt;Button size="sm"&gt;Small&lt;/Button&gt;</Card>
 		</div>
 
 		<!-- States -->
@@ -69,9 +67,7 @@
 				<Button variant="primary" disabled>Disabled</Button>
 				<Button variant="primary" loading>Loading</Button>
 			</div>
-			<Card variant="code" class="mt-4">
-				{'<Button disabled>Disabled</Button>'}
-			</Card>
+			<Card variant="code" class="mt-4">&lt;Button disabled&gt;Disabled&lt;/Button&gt;</Card>
 		</div>
 
 		<!-- All Combinations -->
@@ -197,9 +193,7 @@
 				<Text size="sm">sm - Small Text</Text>
 				<Text size="xs">xs - Extra Small Text</Text>
 			</div>
-			<Card variant="code" class="mt-4">
-				{'<Text size="2xl">Section Heading</Text>'}
-			</Card>
+			<Card variant="code" class="mt-4">&lt;Text size="2xl"&gt;Section Heading&lt;/Text&gt;</Card>
 		</div>
 
 		<!-- Weights -->
@@ -255,7 +249,7 @@
 				<Text as="label">label - Form label element</Text>
 			</div>
 			<Card variant="code" class="mt-4">
-				{'<Text as="h1" size="4xl">Page Title</Text>'}
+				&lt;Text as="h1" size="4xl"&gt;Page Title&lt;/Text&gt;
 			</Card>
 		</div>
 
@@ -312,7 +306,7 @@
 				/>
 			</div>
 			<Card variant="code" class="mt-4">
-				{'<Input type="email" label="Email" placeholder="email@example.com" />'}
+				&lt;Input type="email" label="Email" placeholder="email@example.com" /&gt;
 			</Card>
 		</div>
 
@@ -347,9 +341,7 @@
 				<Input label="Readonly" value="Read-only value" readonly />
 				<Input label="Required Field" placeholder="This field is required" required />
 			</div>
-			<Card variant="code" class="mt-4">
-				{'<Input error errorMessage="Invalid input" />'}
-			</Card>
+			<Card variant="code" class="mt-4">&lt;Input error errorMessage="Invalid input" /&gt;</Card>
 		</div>
 
 		<!-- With Labels and Helper Text -->
@@ -421,9 +413,7 @@
 				appropriate styling for code examples.
 			</Text>
 			<div class="space-y-4">
-				<Card variant="code">
-					{'<Button variant="primary">Click me</Button>'}
-				</Card>
+				<Card variant="code">&lt;Button variant="primary"&gt;Click me&lt;/Button&gt;</Card>
 
 				<Card variant="code">
 					{"import { Button, Card, Text } from '$lib/design-system';"}
@@ -469,7 +459,8 @@
 				</Card>
 			</div>
 			<Card variant="code" class="mt-4">
-				{'<div class="grid gap-4 md:grid-cols-2"><Card>...</Card><Card>...</Card></div>'}
+				&lt;div class="grid gap-4
+				md:grid-cols-2"&gt;&lt;Card&gt;...&lt;/Card&gt;&lt;Card&gt;...&lt;/Card&gt;&lt;/div&gt;
 			</Card>
 		</div>
 	</section>

@@ -18,7 +18,7 @@
 		name?: string;
 		ariaLabel?: string;
 		ariaDescribedBy?: string;
-		autocomplete?: string;
+		autocomplete?: AutoFill;
 		oninput?: (event: Event) => void;
 		onchange?: (event: Event) => void;
 		onfocus?: (event: FocusEvent) => void;
@@ -79,7 +79,7 @@
 </script>
 
 {#if label}
-	<label for={inputId} class="block text-sm font-medium text-text mb-1">
+	<label for={inputId} class="text-text mb-1 block text-sm font-medium">
 		{label}
 		{#if required}
 			<span class="text-error" aria-label="required">*</span>
@@ -109,13 +109,13 @@
 />
 
 {#if helperText && !error}
-	<p id={helperTextId} class="mt-1 text-sm text-subtext">
+	<p id={helperTextId} class="text-subtext mt-1 text-sm">
 		{helperText}
 	</p>
 {/if}
 
 {#if error && errorMessage}
-	<p id={errorMessageId} class="mt-1 text-sm text-error" role="alert">
+	<p id={errorMessageId} class="text-error mt-1 text-sm" role="alert">
 		{errorMessage}
 	</p>
 {/if}

@@ -1,5 +1,5 @@
 import { apiRequest } from './apiService';
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, type Mock } from 'vitest';
 
 /**
  * Mock fetch for unit testing apiRequest
@@ -8,11 +8,11 @@ global.fetch = vi.fn();
 
 describe('apiRequest', () => {
 	beforeEach(() => {
-		(fetch as vi.Mock).mockClear();
+		(fetch as Mock).mockClear();
 	});
 
 	it('logs and returns parsed response on success', async () => {
-		(fetch as vi.Mock).mockResolvedValueOnce({
+		(fetch as Mock).mockResolvedValueOnce({
 			ok: true,
 			status: 200,
 			json: async () => ({ foo: 'bar' })
@@ -22,14 +22,14 @@ describe('apiRequest', () => {
 	});
 
 	it('throws and logs on network error', async () => {
-		(fetch as vi.Mock).mockRejectedValueOnce(new Error('fail'));
+		(fetch as Mock).mockRejectedValueOnce(new Error('fail'));
 		await expect(apiRequest('https://example.com', { method: 'GET' })).rejects.toThrow(
 			'Network error'
 		);
 	});
 
 	it('throws and logs on parse error', async () => {
-		(fetch as vi.Mock).mockResolvedValueOnce({
+		(fetch as Mock).mockResolvedValueOnce({
 			ok: true,
 			status: 200,
 			json: async () => {
@@ -42,7 +42,7 @@ describe('apiRequest', () => {
 	});
 
 	it('throws and logs on HTTP error', async () => {
-		(fetch as vi.Mock).mockResolvedValueOnce({
+		(fetch as Mock).mockResolvedValueOnce({
 			ok: false,
 			status: 403,
 			json: async () => ({ message: 'forbidden' })

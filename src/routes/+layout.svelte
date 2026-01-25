@@ -5,7 +5,8 @@
 		{ href: '/', label: 'Home' },
 		{ href: '/blog', label: 'Blog' },
 		{ href: '/contributions', label: 'Contributions' },
-		{ href: '/cats', label: 'Cats' }
+		{ href: '/cats', label: 'Cats' },
+		{ href: '/design-system', label: 'Design System' }
 	];
 
 	let { children } = $props();
@@ -20,9 +21,11 @@
 
 <nav class="flex justify-between">
 	<span class="pl-2">
-		{#each links as link}
+		<!-- eslint-disable svelte/no-navigation-without-resolve -->
+		{#each links as link (link.href)}
 			<a href={link.href} class="mr-2 border-r border-gray-200 pr-2">{link.label}</a>
 		{/each}
+		<!-- eslint-enable svelte/no-navigation-without-resolve -->
 	</span>
 	<button onclick={toggleTheme} class="pr-2"
 		>Toggle {theme === 'light' ? 'Dark' : 'Light'} Mode</button
