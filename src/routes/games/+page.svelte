@@ -15,9 +15,11 @@
 {#if games.length === 0}
 	<p>No games found.</p>
 {:else}
+	<!-- eslint-disable svelte/no-navigation-without-resolve -->
 	<ul>
-		{#each games as game}
+		{#each games as game (game)}
 			<li><a href={`/games/${game}`}>{game}</a></li>
 		{/each}
 	</ul>
+	<!-- eslint-enable svelte/no-navigation-without-resolve -->
 {/if}

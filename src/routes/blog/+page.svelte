@@ -10,9 +10,11 @@
 {#if data.posts.length === 0}
 	<p>No blog posts found.</p>
 {:else}
+	<!-- eslint-disable svelte/no-navigation-without-resolve -->
 	<ul>
-		{#each data.posts as post}
+		{#each data.posts as post (post)}
 			<li><a href={`/blog/${post}`}>{post}</a></li>
 		{/each}
 	</ul>
+	<!-- eslint-enable svelte/no-navigation-without-resolve -->
 {/if}

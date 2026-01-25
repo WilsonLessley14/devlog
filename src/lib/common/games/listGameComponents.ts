@@ -8,7 +8,7 @@ export async function listGameComponents(): Promise<string[]> {
 	try {
 		const modules = import.meta.glob('./*.svelte');
 		return Object.keys(modules).map((path) => path.replace(/^\.\/(.*)\.svelte$/, '$1'));
-	} catch (e) {
+	} catch {
 		throw new Error('Games directory not found or cannot be read.');
 	}
 }

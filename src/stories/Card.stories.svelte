@@ -59,23 +59,21 @@
 />
 
 <Story name="Grid of Cards">
-	{#snippet children()}
-		<div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-			<CardTestWrapper
-				variant="content"
-				titleText="Feature One"
-				text="A brief description of the first feature."
-			/>
-			<CardTestWrapper
-				variant="content"
-				titleText="Feature Two"
-				text="A brief description of the second feature."
-			/>
-			<CardTestWrapper
-				variant="content"
-				titleText="Feature Three"
-				text="A brief description of the third feature."
-			/>
-		</div>
-	{/snippet}
+	<div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+		<CardTestWrapper
+			variant="content"
+			titleText="Feature One"
+			text="A brief description of the first feature."
+		/>
+		<CardTestWrapper
+			variant="content"
+			titleText="Feature Two"
+			text="A brief description of the second feature."
+		/>
+		<CardTestWrapper
+			variant="content"
+			titleText="Feature Three"
+			text="A brief description of the third feature."
+		/>
+	</div>
 </Story>

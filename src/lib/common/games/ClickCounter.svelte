@@ -3,8 +3,6 @@
 	 * ClickCounter: A simple click counter game component.
 	 * @module ClickCounter
 	 */
-	import { onMount } from 'svelte';
-
 	/**
 	 * Number of times the button has been clicked.
 	 */

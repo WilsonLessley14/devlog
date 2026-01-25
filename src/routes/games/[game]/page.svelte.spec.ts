@@ -4,16 +4,16 @@ import GamePage from './+page.svelte';
 
 describe('[game] route', () => {
 	it('renders a game component if it exists', async () => {
-		const params = { game: 'ClickCounter' };
-		const { getByText } = render(GamePage, { props: { params } });
+		const data = { game: 'ClickCounter' };
+		const { getByText } = render(GamePage, { props: { data } });
 		await waitFor(() => {
 			expect(getByText('Click Counter Game')).toBeTruthy();
 		});
 	});
 
 	it('shows an error if the game does not exist', async () => {
-		const params = { game: 'NonexistentGame' };
-		const { getByText } = render(GamePage, { props: { params } });
+		const data = { game: 'NonexistentGame' };
+		const { getByText } = render(GamePage, { props: { data } });
 		await waitFor(() => {
 			expect(getByText('Game not found: NonexistentGame')).toBeTruthy();
 		});

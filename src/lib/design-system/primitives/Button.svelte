@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte';
 	import type { ButtonVariant, Size } from '../tokens';
 	import { classNames } from '../utils';
 	import type { ButtonProps } from './ButtonProps.ts';

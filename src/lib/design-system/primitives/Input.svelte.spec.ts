@@ -180,7 +180,7 @@ describe('Input', () => {
 	describe('User interactions', () => {
 		it('updates value on input', async () => {
 			const user = userEvent.setup();
-			const { component } = render(Input);
+			render(Input);
 			const input = screen.getByRole('textbox') as HTMLInputElement;
 
 			await user.type(input, 'Hello');
