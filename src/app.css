@@ -25,6 +25,10 @@
 	--border: #e5e5e5;
 	--border-hover: #d4d4d4;
 
+	/* Code Colors */
+	--code-bg: #1f2937;
+	--code-text: #e5e7eb;
+
 	/* Shadows */
 	--shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 	--shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
@@ -57,6 +61,10 @@
 	--border: #525252;
 	--border-hover: #666666;
 
+	/* Code Colors */
+	--code-bg: #1f2937;
+	--code-text: #e5e7eb;
+
 	/* Shadows */
 	--shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
 	--shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
@@ -84,6 +92,8 @@
 	--color-surface-hover: var(--surface-hover);
 	--color-border: var(--border);
 	--color-border-hover: var(--border-hover);
+	--color-code-bg: var(--code-bg);
+	--color-code-text: var(--code-text);
 
 	/* Typography */
 	--font-sans:
@@ -183,4 +193,32 @@ h1 {
 	margin-bottom: 1rem;
 	font-size: 1.5rem;
 	font-weight: 600;
+}
+
+/* Code blocks */
+pre {
+	background-color: var(--code-bg);
+	color: var(--code-text);
+	padding: 1rem;
+	border-radius: var(--radius-lg);
+	overflow-x: auto;
+	font-family: var(--font-mono);
+	font-size: var(--font-size-sm);
+	line-height: var(--line-height-relaxed);
+}
+
+pre code {
+	background: none;
+	padding: 0;
+	color: inherit;
+}
+
+/* Inline code */
+code {
+	background-color: var(--code-bg);
+	color: var(--code-text);
+	padding: var(--spacing-0) var(--spacing-1);
+	border-radius: var(--radius-base);
+	font-family: var(--font-mono);
+	font-size: 0.875em;
 }
