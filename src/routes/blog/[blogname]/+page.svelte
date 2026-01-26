@@ -1,15 +1,28 @@
 <script lang="ts">
+	import { Text, Card } from '$lib/design-system';
+
 	/**
 	 * Renders HTML content of a blog post.
 	 * @param {{ slug: string; html: string }} data
 	 */
-	export let data: { slug: string; html: string };
+	let { data }: { data: { slug: string; html: string } } = $props();
 </script>
 
-<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
-<nav><a href="/blog">← All Posts</a></nav>
-<h1>{data.slug}</h1>
-<article>
-	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-	{@html data.html}
-</article>
+<div class="space-y-6">
+	<!-- eslint-disable svelte/no-navigation-without-resolve -->
+	<nav>
+		<a href="/blog" class="text-brand hover:underline">
+			<Text as="span" variant="body" color="brand">← All Posts</Text>
+		</a>
+	</nav>
+	<!-- eslint-enable svelte/no-navigation-without-resolve -->
+
+	<Text as="h1" variant="heading" size="3xl">{data.slug}</Text>
+
+	<Card>
+		<article class="prose prose-neutral dark:prose-invert max-w-none">
+			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+			{@html data.html}
+		</article>
+	</Card>
+</div>
