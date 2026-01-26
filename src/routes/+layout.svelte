@@ -1,5 +1,6 @@
 <script lang="ts">
 	import '../app.css';
+	import { Breadcrumb } from '$lib/design-system';
 
 	let links = [
 		{ href: '/', label: 'Home' },
@@ -31,5 +32,7 @@
 		>Toggle {theme === 'light' ? 'Dark' : 'Light'} Mode</button
 	>
 </nav>
+
+<Breadcrumb />
 
 {@render children()}

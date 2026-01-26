@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Button, Card, Input, Text } from '$lib/design-system';
+	import BreadcrumbTestWrapper from '$lib/design-system/primitives/BreadcrumbTestWrapper.svelte';
 
 	// State for interactive demos
 	let inputValue = $state('');
@@ -461,6 +462,106 @@
 			<Card variant="code" class="mt-4">
 				&lt;div class="grid gap-4
 				md:grid-cols-2"&gt;&lt;Card&gt;...&lt;/Card&gt;&lt;Card&gt;...&lt;/Card&gt;&lt;/div&gt;
+			</Card>
+		</div>
+	</section>
+
+	<!-- Breadcrumb Section -->
+	<section class="mb-16">
+		<Text as="h2" variant="heading" size="2xl" class="border-border mb-6 border-b pb-2">
+			Breadcrumb
+		</Text>
+
+		<Text variant="body" class="mb-6">
+			Breadcrumbs provide navigation context by showing the current page's location within the site
+			hierarchy. They automatically generate from the URL path and support customization.
+		</Text>
+
+		<!-- Basic Examples -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Basic Examples</Text>
+			<div class="space-y-4">
+				<div class="bg-surface border-border rounded-md border p-4">
+					<Text variant="caption" color="subtext" class="mb-2">Path: /blog</Text>
+					<BreadcrumbTestWrapper pathname="/blog" />
+				</div>
+				<div class="bg-surface border-border rounded-md border p-4">
+					<Text variant="caption" color="subtext" class="mb-2">Path: /blog/my-first-post</Text>
+					<BreadcrumbTestWrapper pathname="/blog/my-first-post" />
+				</div>
+				<div class="bg-surface border-border rounded-md border p-4">
+					<Text variant="caption" color="subtext" class="mb-2">Path: /design-system</Text>
+					<BreadcrumbTestWrapper pathname="/design-system" />
+				</div>
+			</div>
+			<Card variant="code" class="mt-4">&lt;Breadcrumb /&gt;</Card>
+		</div>
+
+		<!-- Sizes -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Sizes</Text>
+			<div class="space-y-4">
+				<div class="bg-surface border-border rounded-md border p-4">
+					<Text variant="caption" color="subtext" class="mb-2">Small (default)</Text>
+					<BreadcrumbTestWrapper pathname="/blog/post" size="sm" />
+				</div>
+				<div class="bg-surface border-border rounded-md border p-4">
+					<Text variant="caption" color="subtext" class="mb-2">Medium</Text>
+					<BreadcrumbTestWrapper pathname="/blog/post" size="md" />
+				</div>
+				<div class="bg-surface border-border rounded-md border p-4">
+					<Text variant="caption" color="subtext" class="mb-2">Large</Text>
+					<BreadcrumbTestWrapper pathname="/blog/post" size="lg" />
+				</div>
+			</div>
+			<Card variant="code" class="mt-4">&lt;Breadcrumb size="md" /&gt;</Card>
+		</div>
+
+		<!-- Separators -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Custom Separators</Text>
+			<div class="space-y-4">
+				<div class="bg-surface border-border rounded-md border p-4">
+					<Text variant="caption" color="subtext" class="mb-2">Default (/)</Text>
+					<BreadcrumbTestWrapper pathname="/blog/post" separator="/" />
+				</div>
+				<div class="bg-surface border-border rounded-md border p-4">
+					<Text variant="caption" color="subtext" class="mb-2">Chevron (›)</Text>
+					<BreadcrumbTestWrapper pathname="/blog/post" separator="›" />
+				</div>
+				<div class="bg-surface border-border rounded-md border p-4">
+					<Text variant="caption" color="subtext" class="mb-2">Arrow (>)</Text>
+					<BreadcrumbTestWrapper pathname="/blog/post" separator=">" />
+				</div>
+			</div>
+			<Card variant="code" class="mt-4">&lt;Breadcrumb separator="›" /&gt;</Card>
+		</div>
+
+		<!-- Customization -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Customization Options</Text>
+			<div class="space-y-4">
+				<div class="bg-surface border-border rounded-md border p-4">
+					<Text variant="caption" color="subtext" class="mb-2">Without Home</Text>
+					<BreadcrumbTestWrapper pathname="/blog/post" showHome={false} />
+				</div>
+				<div class="bg-surface border-border rounded-md border p-4">
+					<Text variant="caption" color="subtext" class="mb-2">Custom Home Label</Text>
+					<BreadcrumbTestWrapper pathname="/blog/post" homeLabel="Dashboard" />
+				</div>
+				<div class="bg-surface border-border rounded-md border p-4">
+					<Text variant="caption" color="subtext" class="mb-2">Custom Items</Text>
+					<BreadcrumbTestWrapper
+						items={[
+							{ label: 'Dashboard', href: '/dashboard' },
+							{ label: 'Settings', href: '/settings' },
+							{ label: 'Profile', href: '/profile' }
+						]}
+					/>
+				</div>
+			</div>
+			<Card variant="code" class="mt-4">
+				&lt;Breadcrumb showHome={'{false}'} /&gt;
 			</Card>
 		</div>
 	</section>
