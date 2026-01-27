@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { listGameComponents } from '$lib/common/games/listGameComponents';
+	import { Link } from '$lib/design-system';
+	import { onMount } from 'svelte';
+
 	let games: string[] = [];
 
 	/**
 	 * Load the list of game component names on mount.
 	 */
-	import { onMount } from 'svelte';
 	onMount(async () => {
 		games = await listGameComponents();
 	});
@@ -15,11 +17,9 @@
 {#if games.length === 0}
 	<p>No games found.</p>
 {:else}
-	<!-- eslint-disable svelte/no-navigation-without-resolve -->
 	<ul>
 		{#each games as game (game)}
-			<li><a href={`/games/${game}`}>{game}</a></li>
+			<li><Link href={`/games/${game}`}>{game}</Link></li>
 		{/each}
 	</ul>
-	<!-- eslint-enable svelte/no-navigation-without-resolve -->
 {/if}
