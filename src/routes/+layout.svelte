@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../app.css';
-	import { Breadcrumb } from '$lib/design-system';
+	import { Breadcrumb, Link } from '$lib/design-system';
 
 	let links = [
 		{ href: '/', label: 'Home' },
@@ -22,11 +22,14 @@
 
 <nav class="flex justify-between">
 	<span class="pl-2">
-		<!-- eslint-disable svelte/no-navigation-without-resolve -->
 		{#each links as link (link.href)}
-			<a href={link.href} class="mr-2 border-r border-gray-200 pr-2">{link.label}</a>
+			<Link
+				href={link.href}
+				variant="subtle"
+				underline="none"
+				class="mr-2 border-r border-gray-200 pr-2">{link.label}</Link
+			>
 		{/each}
-		<!-- eslint-enable svelte/no-navigation-without-resolve -->
 	</span>
 	<button onclick={toggleTheme} class="pr-2"
 		>Toggle {theme === 'light' ? 'Dark' : 'Light'} Mode</button
