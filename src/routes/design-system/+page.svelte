@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button, Card, Input, Link, Text } from '$lib/design-system';
+	import { Button, Card, Image, Input, Link, Text } from '$lib/design-system';
 	import BreadcrumbTestWrapper from '$lib/design-system/primitives/BreadcrumbTestWrapper.svelte';
 
 	// State for interactive demos
@@ -695,6 +695,209 @@
 					</tbody>
 				</table>
 			</div>
+		</div>
+	</section>
+
+	<!-- Image Section -->
+	<section class="mb-16">
+		<Text as="h2" variant="heading" size="2xl" class="border-border mb-6 border-b pb-2">Image</Text>
+
+		<Text variant="body" class="mb-6">
+			Images display visual content with consistent styling, aspect ratios, and interactive effects.
+			Supports lazy loading, various fits, and hover animations.
+		</Text>
+
+		<!-- Aspect Ratios -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Aspect Ratios</Text>
+			<div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+				<div>
+					<Image
+						src="https://placecats.com/200/200"
+						alt="Square aspect ratio"
+						aspectRatio="square"
+						rounded="md"
+					/>
+					<Text variant="caption" color="subtext" class="mt-2">square (1:1)</Text>
+				</div>
+				<div>
+					<Image
+						src="https://placecats.com/320/180"
+						alt="Video aspect ratio"
+						aspectRatio="video"
+						rounded="md"
+					/>
+					<Text variant="caption" color="subtext" class="mt-2">video (16:9)</Text>
+				</div>
+				<div>
+					<Image
+						src="https://placecats.com/150/200"
+						alt="Portrait aspect ratio"
+						aspectRatio="portrait"
+						rounded="md"
+					/>
+					<Text variant="caption" color="subtext" class="mt-2">portrait (3:4)</Text>
+				</div>
+				<div>
+					<Image
+						src="https://placecats.com/400/200"
+						alt="Wide aspect ratio"
+						aspectRatio="wide"
+						rounded="md"
+					/>
+					<Text variant="caption" color="subtext" class="mt-2">wide (2:1)</Text>
+				</div>
+			</div>
+			<Card variant="code" class="mt-4"
+				>&lt;Image src="..." alt="..." aspectRatio="square" /&gt;</Card
+			>
+		</div>
+
+		<!-- Rounded Corners -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Rounded Corners</Text>
+			<div class="flex flex-wrap items-end gap-4">
+				<div>
+					<Image
+						src="https://placecats.com/100/100"
+						alt="No rounding"
+						aspectRatio="square"
+						rounded="none"
+						class="w-24"
+					/>
+					<Text variant="caption" color="subtext" class="mt-2">none</Text>
+				</div>
+				<div>
+					<Image
+						src="https://placecats.com/100/100"
+						alt="Small rounding"
+						aspectRatio="square"
+						rounded="sm"
+						class="w-24"
+					/>
+					<Text variant="caption" color="subtext" class="mt-2">sm</Text>
+				</div>
+				<div>
+					<Image
+						src="https://placecats.com/100/100"
+						alt="Medium rounding"
+						aspectRatio="square"
+						rounded="md"
+						class="w-24"
+					/>
+					<Text variant="caption" color="subtext" class="mt-2">md</Text>
+				</div>
+				<div>
+					<Image
+						src="https://placecats.com/100/100"
+						alt="Large rounding"
+						aspectRatio="square"
+						rounded="lg"
+						class="w-24"
+					/>
+					<Text variant="caption" color="subtext" class="mt-2">lg</Text>
+				</div>
+				<div>
+					<Image
+						src="https://placecats.com/100/100"
+						alt="Full rounding (circle)"
+						aspectRatio="square"
+						rounded="full"
+						class="w-24"
+					/>
+					<Text variant="caption" color="subtext" class="mt-2">full</Text>
+				</div>
+			</div>
+			<Card variant="code" class="mt-4">&lt;Image src="..." alt="..." rounded="full" /&gt;</Card>
+		</div>
+
+		<!-- Effects -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Effects</Text>
+			<div class="flex flex-wrap gap-6">
+				<div>
+					<Image
+						src="https://placecats.com/150/150"
+						alt="With shadow"
+						aspectRatio="square"
+						rounded="md"
+						shadow
+						class="w-36"
+					/>
+					<Text variant="caption" color="subtext" class="mt-2">shadow</Text>
+				</div>
+				<div>
+					<Image
+						src="https://placecats.com/150/150"
+						alt="With hover scale"
+						aspectRatio="square"
+						rounded="md"
+						hoverScale
+						class="w-36"
+					/>
+					<Text variant="caption" color="subtext" class="mt-2">hoverScale (hover me)</Text>
+				</div>
+				<div>
+					<Image
+						src="https://placecats.com/150/150"
+						alt="Gallery style"
+						aspectRatio="square"
+						rounded="lg"
+						shadow
+						hoverScale
+						class="w-36"
+					/>
+					<Text variant="caption" color="subtext" class="mt-2">combined (gallery style)</Text>
+				</div>
+			</div>
+			<Card variant="code" class="mt-4">&lt;Image src="..." alt="..." shadow hoverScale /&gt;</Card>
+		</div>
+
+		<!-- Object Fit -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Object Fit</Text>
+			<Text variant="body" color="subtext" class="mb-4">
+				Control how the image fills its container when aspect ratios differ.
+			</Text>
+			<div
+				class="bg-surface border-border grid grid-cols-2 gap-4 rounded-md border p-4 md:grid-cols-4"
+			>
+				<div>
+					<div class="bg-border h-32 w-full">
+						<Image
+							src="https://placecats.com/200/100"
+							alt="Object cover"
+							fit="cover"
+							class="h-32"
+						/>
+					</div>
+					<Text variant="caption" color="subtext" class="mt-2">cover (default)</Text>
+				</div>
+				<div>
+					<div class="bg-border h-32 w-full">
+						<Image
+							src="https://placecats.com/200/100"
+							alt="Object contain"
+							fit="contain"
+							class="h-32"
+						/>
+					</div>
+					<Text variant="caption" color="subtext" class="mt-2">contain</Text>
+				</div>
+				<div>
+					<div class="bg-border h-32 w-full">
+						<Image src="https://placecats.com/200/100" alt="Object fill" fit="fill" class="h-32" />
+					</div>
+					<Text variant="caption" color="subtext" class="mt-2">fill</Text>
+				</div>
+				<div>
+					<div class="bg-border h-32 w-full overflow-hidden">
+						<Image src="https://placecats.com/200/100" alt="Object none" fit="none" class="h-32" />
+					</div>
+					<Text variant="caption" color="subtext" class="mt-2">none</Text>
+				</div>
+			</div>
+			<Card variant="code" class="mt-4">&lt;Image src="..." alt="..." fit="contain" /&gt;</Card>
 		</div>
 	</section>
 
