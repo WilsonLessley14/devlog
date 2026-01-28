@@ -1,5 +1,16 @@
 <script lang="ts">
-	import { Badge, Button, Card, Icon, Image, Input, Link, Spinner, Text } from '$lib/design-system';
+	import {
+		Badge,
+		Button,
+		Card,
+		Icon,
+		Image,
+		Input,
+		Link,
+		Spinner,
+		Text,
+		Tooltip
+	} from '$lib/design-system';
 	import BreadcrumbTestWrapper from '$lib/design-system/primitives/BreadcrumbTestWrapper.svelte';
 
 	// State for interactive demos
@@ -1589,6 +1600,141 @@
 					</div>
 				</Card>
 			</div>
+		</div>
+	</section>
+
+	<!-- Tooltip Section -->
+	<section class="mb-16">
+		<Text as="h2" variant="heading" size="2xl" class="border-border mb-6 border-b pb-2">
+			Tooltip
+		</Text>
+
+		<Text variant="body" class="mb-6">
+			Tooltips provide hover hints and extra context on buttons, icons, or other interactive
+			elements. They appear on hover and focus, supporting keyboard accessibility.
+		</Text>
+
+		<!-- Positions -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Positions</Text>
+			<div class="flex flex-wrap items-center justify-center gap-12 py-8">
+				<Tooltip text="Tooltip on top" position="top">
+					<Button variant="secondary">Top</Button>
+				</Tooltip>
+				<Tooltip text="Tooltip on bottom" position="bottom">
+					<Button variant="secondary">Bottom</Button>
+				</Tooltip>
+				<Tooltip text="Tooltip on left" position="left">
+					<Button variant="secondary">Left</Button>
+				</Tooltip>
+				<Tooltip text="Tooltip on right" position="right">
+					<Button variant="secondary">Right</Button>
+				</Tooltip>
+			</div>
+			<Card variant="code" class="mt-4">
+				&lt;Tooltip text="Tooltip on top"
+				position="top"&gt;&lt;Button&gt;Top&lt;/Button&gt;&lt;/Tooltip&gt;
+			</Card>
+		</div>
+
+		<!-- With Icons -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">With Icons</Text>
+			<Text variant="body" color="subtext" class="mb-4">
+				Tooltips work well on icon buttons where the action might not be immediately clear.
+			</Text>
+			<div class="flex flex-wrap items-center gap-6">
+				<Tooltip text="Add new item">
+					<button
+						type="button"
+						class="bg-surface border-border hover:bg-surfaceHover rounded-md border p-2"
+					>
+						<Icon size="md" color="current">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="currentColor"
+								class="h-full w-full"
+							>
+								<path
+									fill-rule="evenodd"
+									d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z"
+									clip-rule="evenodd"
+								/>
+							</svg>
+						</Icon>
+					</button>
+				</Tooltip>
+				<Tooltip text="Mark as favorite">
+					<button
+						type="button"
+						class="bg-surface border-border hover:bg-surfaceHover rounded-md border p-2"
+					>
+						<Icon size="md" color="warning">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="currentColor"
+								class="h-full w-full"
+							>
+								<path
+									fill-rule="evenodd"
+									d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+									clip-rule="evenodd"
+								/>
+							</svg>
+						</Icon>
+					</button>
+				</Tooltip>
+				<Tooltip text="Delete item" position="bottom">
+					<button
+						type="button"
+						class="bg-surface border-border hover:bg-surfaceHover rounded-md border p-2"
+					>
+						<Icon size="md" color="error">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="currentColor"
+								class="h-full w-full"
+							>
+								<path
+									fill-rule="evenodd"
+									d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
+									clip-rule="evenodd"
+								/>
+							</svg>
+						</Icon>
+					</button>
+				</Tooltip>
+			</div>
+			<Card variant="code" class="mt-4">
+				&lt;Tooltip text="Add new
+				item"&gt;&lt;button&gt;&lt;Icon&gt;...&lt;/Icon&gt;&lt;/button&gt;&lt;/Tooltip&gt;
+			</Card>
+		</div>
+
+		<!-- Accessibility -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Accessibility</Text>
+			<Text variant="body" color="subtext" class="mb-4">
+				Tooltips use role="tooltip" and aria-describedby to connect the trigger with the tooltip
+				content. They appear on both hover and keyboard focus, and respect prefers-reduced-motion.
+			</Text>
+			<div class="space-y-4">
+				<div class="bg-surface border-border rounded-md border p-4">
+					<div class="flex items-center gap-3">
+						<Tooltip text="This tooltip appears on keyboard focus too">
+							<Button variant="primary">Tab to me</Button>
+						</Tooltip>
+						<Text variant="body" color="subtext">Try using Tab to focus this button</Text>
+					</div>
+				</div>
+			</div>
+			<Card variant="code" class="mt-4">
+				&lt;Tooltip text="Accessible tooltip"&gt;&lt;Button&gt;Focus
+				me&lt;/Button&gt;&lt;/Tooltip&gt;
+			</Card>
 		</div>
 	</section>
 
