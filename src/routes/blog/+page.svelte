@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Text, Card } from '$lib/design-system';
+	import { Text, Card, Link } from '$lib/design-system';
 
 	/**
 	 * Renders a list of blog post filenames.
@@ -14,16 +14,12 @@
 	{#if data.posts.length === 0}
 		<Text variant="body" color="subtext">No blog posts found.</Text>
 	{:else}
-		<!-- eslint-disable svelte/no-navigation-without-resolve -->
 		<div class="space-y-4">
 			{#each data.posts as post (post)}
 				<Card>
-					<a href={`/blog/${post}`} class="text-brand hover:underline">
-						<Text as="span" variant="body" color="brand">{post}</Text>
-					</a>
+					<Link href={`/blog/${post}`}>{post}</Link>
 				</Card>
 			{/each}
 		</div>
-		<!-- eslint-enable svelte/no-navigation-without-resolve -->
 	{/if}
 </div>

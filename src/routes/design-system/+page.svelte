@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button, Card, Input, Text } from '$lib/design-system';
+	import { Badge, Button, Card, Icon, Image, Input, Link, Spinner, Text } from '$lib/design-system';
 	import BreadcrumbTestWrapper from '$lib/design-system/primitives/BreadcrumbTestWrapper.svelte';
 
 	// State for interactive demos
@@ -133,6 +133,587 @@
 								<Button variant="ghost" size="lg">Button</Button>
 							</td>
 						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+
+	<!-- Badge Section -->
+	<section class="mb-16">
+		<Text as="h2" variant="heading" size="2xl" class="border-border mb-6 border-b pb-2">Badge</Text>
+
+		<Text variant="body" class="mb-6">
+			Badges are compact elements used to display labels, tags, or status indicators. They support
+			multiple variants for semantic meaning and multiple sizes for different contexts.
+		</Text>
+
+		<!-- Variants -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Variants</Text>
+			<div class="flex flex-wrap items-center gap-3">
+				<Badge variant="default">Default</Badge>
+				<Badge variant="success">Success</Badge>
+				<Badge variant="warning">Warning</Badge>
+				<Badge variant="error">Error</Badge>
+			</div>
+			<Card variant="code" class="mt-4">&lt;Badge variant="success"&gt;Success&lt;/Badge&gt;</Card>
+		</div>
+
+		<!-- Sizes -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Sizes</Text>
+			<div class="flex flex-wrap items-center gap-3">
+				<Badge size="sm">Small</Badge>
+				<Badge size="md">Medium</Badge>
+				<Badge size="lg">Large</Badge>
+			</div>
+			<Card variant="code" class="mt-4">&lt;Badge size="lg"&gt;Large&lt;/Badge&gt;</Card>
+		</div>
+
+		<!-- Use Cases -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Common Use Cases</Text>
+
+			<!-- Blog Tags -->
+			<div class="mb-6">
+				<Text variant="label" class="mb-3">Blog Post Tags</Text>
+				<div class="flex flex-wrap gap-2">
+					<Badge>TypeScript</Badge>
+					<Badge>Svelte</Badge>
+					<Badge>JavaScript</Badge>
+					<Badge>Web Development</Badge>
+				</div>
+			</div>
+
+			<!-- Skill Labels -->
+			<div class="mb-6">
+				<Text variant="label" class="mb-3">Skill Labels</Text>
+				<div class="flex flex-wrap gap-2">
+					<Badge variant="success">JavaScript</Badge>
+					<Badge variant="success">React</Badge>
+					<Badge variant="success">Node.js</Badge>
+					<Badge variant="warning">Learning</Badge>
+				</div>
+			</div>
+
+			<!-- Status Indicators -->
+			<div class="mb-6">
+				<Text variant="label" class="mb-3">Status Indicators</Text>
+				<div class="flex flex-wrap gap-2">
+					<Badge variant="success">Active</Badge>
+					<Badge variant="warning">Pending</Badge>
+					<Badge variant="error">Failed</Badge>
+					<Badge variant="default">Draft</Badge>
+				</div>
+			</div>
+		</div>
+
+		<!-- All Combinations -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">All Combinations</Text>
+			<div class="overflow-x-auto">
+				<table class="w-full border-collapse">
+					<thead>
+						<tr>
+							<th class="border-border border-b p-2 text-left"></th>
+							<th class="border-border border-b p-2 text-left">
+								<Text variant="label">Small</Text>
+							</th>
+							<th class="border-border border-b p-2 text-left">
+								<Text variant="label">Medium</Text>
+							</th>
+							<th class="border-border border-b p-2 text-left">
+								<Text variant="label">Large</Text>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="border-border border-b p-2">
+								<Text variant="label">Default</Text>
+							</td>
+							<td class="border-border border-b p-2">
+								<Badge variant="default" size="sm">Badge</Badge>
+							</td>
+							<td class="border-border border-b p-2">
+								<Badge variant="default" size="md">Badge</Badge>
+							</td>
+							<td class="border-border border-b p-2">
+								<Badge variant="default" size="lg">Badge</Badge>
+							</td>
+						</tr>
+						<tr>
+							<td class="border-border border-b p-2">
+								<Text variant="label">Success</Text>
+							</td>
+							<td class="border-border border-b p-2">
+								<Badge variant="success" size="sm">Badge</Badge>
+							</td>
+							<td class="border-border border-b p-2">
+								<Badge variant="success" size="md">Badge</Badge>
+							</td>
+							<td class="border-border border-b p-2">
+								<Badge variant="success" size="lg">Badge</Badge>
+							</td>
+						</tr>
+						<tr>
+							<td class="border-border border-b p-2">
+								<Text variant="label">Warning</Text>
+							</td>
+							<td class="border-border border-b p-2">
+								<Badge variant="warning" size="sm">Badge</Badge>
+							</td>
+							<td class="border-border border-b p-2">
+								<Badge variant="warning" size="md">Badge</Badge>
+							</td>
+							<td class="border-border border-b p-2">
+								<Badge variant="warning" size="lg">Badge</Badge>
+							</td>
+						</tr>
+						<tr>
+							<td class="border-border border-b p-2">
+								<Text variant="label">Error</Text>
+							</td>
+							<td class="border-border border-b p-2">
+								<Badge variant="error" size="sm">Badge</Badge>
+							</td>
+							<td class="border-border border-b p-2">
+								<Badge variant="error" size="md">Badge</Badge>
+							</td>
+							<td class="border-border border-b p-2">
+								<Badge variant="error" size="lg">Badge</Badge>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+
+	<!-- Icon Section -->
+	<section class="mb-16">
+		<Text as="h2" variant="heading" size="2xl" class="border-border mb-6 border-b pb-2">Icon</Text>
+
+		<Text variant="body" class="mb-6">
+			Icons are wrapper components for SVG icons, providing consistent sizing and coloring. They
+			support accessibility through labels for meaningful icons or aria-hidden for decorative ones.
+		</Text>
+
+		<!-- Sizes -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Sizes</Text>
+			<div class="flex flex-wrap items-center gap-6">
+				<div class="text-center">
+					<Icon size="xs">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="currentColor"
+							class="h-full w-full"
+						>
+							<path
+								fill-rule="evenodd"
+								d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+								clip-rule="evenodd"
+							/>
+						</svg>
+					</Icon>
+					<Text variant="caption" color="subtext" class="mt-2">xs (12px)</Text>
+				</div>
+				<div class="text-center">
+					<Icon size="sm">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="currentColor"
+							class="h-full w-full"
+						>
+							<path
+								fill-rule="evenodd"
+								d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+								clip-rule="evenodd"
+							/>
+						</svg>
+					</Icon>
+					<Text variant="caption" color="subtext" class="mt-2">sm (16px)</Text>
+				</div>
+				<div class="text-center">
+					<Icon size="md">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="currentColor"
+							class="h-full w-full"
+						>
+							<path
+								fill-rule="evenodd"
+								d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+								clip-rule="evenodd"
+							/>
+						</svg>
+					</Icon>
+					<Text variant="caption" color="subtext" class="mt-2">md (20px)</Text>
+				</div>
+				<div class="text-center">
+					<Icon size="lg">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="currentColor"
+							class="h-full w-full"
+						>
+							<path
+								fill-rule="evenodd"
+								d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+								clip-rule="evenodd"
+							/>
+						</svg>
+					</Icon>
+					<Text variant="caption" color="subtext" class="mt-2">lg (24px)</Text>
+				</div>
+				<div class="text-center">
+					<Icon size="xl">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="currentColor"
+							class="h-full w-full"
+						>
+							<path
+								fill-rule="evenodd"
+								d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+								clip-rule="evenodd"
+							/>
+						</svg>
+					</Icon>
+					<Text variant="caption" color="subtext" class="mt-2">xl (32px)</Text>
+				</div>
+			</div>
+			<Card variant="code" class="mt-4"
+				>&lt;Icon size="lg"&gt;&lt;svg&gt;...&lt;/svg&gt;&lt;/Icon&gt;</Card
+			>
+		</div>
+
+		<!-- Colors -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Colors</Text>
+			<div class="flex flex-wrap items-center gap-6">
+				<div class="text-center">
+					<span class="text-brand">
+						<Icon color="current" size="lg">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="currentColor"
+								class="h-full w-full"
+							>
+								<path
+									fill-rule="evenodd"
+									d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+									clip-rule="evenodd"
+								/>
+							</svg>
+						</Icon>
+					</span>
+					<Text variant="caption" color="subtext" class="mt-2">current (inherits)</Text>
+				</div>
+				<div class="text-center">
+					<Icon color="primary" size="lg">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="currentColor"
+							class="h-full w-full"
+						>
+							<path
+								fill-rule="evenodd"
+								d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+								clip-rule="evenodd"
+							/>
+						</svg>
+					</Icon>
+					<Text variant="caption" color="subtext" class="mt-2">primary</Text>
+				</div>
+				<div class="text-center">
+					<Icon color="secondary" size="lg">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="currentColor"
+							class="h-full w-full"
+						>
+							<path
+								fill-rule="evenodd"
+								d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+								clip-rule="evenodd"
+							/>
+						</svg>
+					</Icon>
+					<Text variant="caption" color="subtext" class="mt-2">secondary</Text>
+				</div>
+				<div class="text-center">
+					<Icon color="muted" size="lg">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="currentColor"
+							class="h-full w-full"
+						>
+							<path
+								fill-rule="evenodd"
+								d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+								clip-rule="evenodd"
+							/>
+						</svg>
+					</Icon>
+					<Text variant="caption" color="subtext" class="mt-2">muted</Text>
+				</div>
+				<div class="text-center">
+					<Icon color="success" size="lg">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="currentColor"
+							class="h-full w-full"
+						>
+							<path
+								fill-rule="evenodd"
+								d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+								clip-rule="evenodd"
+							/>
+						</svg>
+					</Icon>
+					<Text variant="caption" color="subtext" class="mt-2">success</Text>
+				</div>
+				<div class="text-center">
+					<Icon color="warning" size="lg">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="currentColor"
+							class="h-full w-full"
+						>
+							<path
+								fill-rule="evenodd"
+								d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z"
+								clip-rule="evenodd"
+							/>
+						</svg>
+					</Icon>
+					<Text variant="caption" color="subtext" class="mt-2">warning</Text>
+				</div>
+				<div class="text-center">
+					<Icon color="error" size="lg">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="currentColor"
+							class="h-full w-full"
+						>
+							<path
+								fill-rule="evenodd"
+								d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
+								clip-rule="evenodd"
+							/>
+						</svg>
+					</Icon>
+					<Text variant="caption" color="subtext" class="mt-2">error</Text>
+				</div>
+			</div>
+			<Card variant="code" class="mt-4"
+				>&lt;Icon color="success"&gt;&lt;svg&gt;...&lt;/svg&gt;&lt;/Icon&gt;</Card
+			>
+		</div>
+
+		<!-- Accessibility -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Accessibility</Text>
+			<Text variant="body" color="subtext" class="mb-4">
+				Icons without a label are treated as decorative and hidden from screen readers. Icons with a
+				label are announced as images with the provided description.
+			</Text>
+			<div class="space-y-4">
+				<div class="bg-surface border-border rounded-md border p-4">
+					<div class="flex items-center gap-3">
+						<Icon size="lg" color="muted">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="currentColor"
+								class="h-full w-full"
+							>
+								<path
+									fill-rule="evenodd"
+									d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+									clip-rule="evenodd"
+								/>
+							</svg>
+						</Icon>
+						<Text variant="body">Decorative icon (no label) - aria-hidden="true"</Text>
+					</div>
+				</div>
+				<div class="bg-surface border-border rounded-md border p-4">
+					<div class="flex items-center gap-3">
+						<Icon size="lg" color="primary" label="Favorite">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="currentColor"
+								class="h-full w-full"
+							>
+								<path
+									fill-rule="evenodd"
+									d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+									clip-rule="evenodd"
+								/>
+							</svg>
+						</Icon>
+						<Text variant="body">Meaningful icon with label - role="img" aria-label="Favorite"</Text
+						>
+					</div>
+				</div>
+			</div>
+			<Card variant="code" class="mt-4"
+				>&lt;Icon label="Favorite"&gt;&lt;svg&gt;...&lt;/svg&gt;&lt;/Icon&gt;</Card
+			>
+		</div>
+
+		<!-- Use Cases -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Common Use Cases</Text>
+			<div class="grid gap-4 md:grid-cols-2">
+				<Card variant="content">
+					{#snippet title()}
+						<Text as="h4" variant="heading" size="base">Button with Icon</Text>
+					{/snippet}
+					<div class="mt-2 flex items-center gap-2">
+						<Button variant="primary">
+							<span class="flex items-center gap-2">
+								<Icon size="sm" color="current">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 24 24"
+										fill="currentColor"
+										class="h-full w-full"
+									>
+										<path
+											fill-rule="evenodd"
+											d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z"
+											clip-rule="evenodd"
+										/>
+									</svg>
+								</Icon>
+								Add Item
+							</span>
+						</Button>
+					</div>
+				</Card>
+
+				<Card variant="content">
+					{#snippet title()}
+						<Text as="h4" variant="heading" size="base">Status Indicators</Text>
+					{/snippet}
+					<div class="mt-2 flex items-center gap-4">
+						<span class="flex items-center gap-1">
+							<Icon size="sm" color="success">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="currentColor"
+									class="h-full w-full"
+								>
+									<path
+										fill-rule="evenodd"
+										d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+										clip-rule="evenodd"
+									/>
+								</svg>
+							</Icon>
+							<Text variant="caption" color="success">Active</Text>
+						</span>
+						<span class="flex items-center gap-1">
+							<Icon size="sm" color="error">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="currentColor"
+									class="h-full w-full"
+								>
+									<path
+										fill-rule="evenodd"
+										d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
+										clip-rule="evenodd"
+									/>
+								</svg>
+							</Icon>
+							<Text variant="caption" color="error">Error</Text>
+						</span>
+					</div>
+				</Card>
+			</div>
+		</div>
+
+		<!-- All Combinations -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">All Combinations</Text>
+			<div class="overflow-x-auto">
+				<table class="w-full border-collapse">
+					<thead>
+						<tr>
+							<th class="border-border border-b p-2 text-left"></th>
+							<th class="border-border border-b p-2 text-left">
+								<Text variant="label">xs</Text>
+							</th>
+							<th class="border-border border-b p-2 text-left">
+								<Text variant="label">sm</Text>
+							</th>
+							<th class="border-border border-b p-2 text-left">
+								<Text variant="label">md</Text>
+							</th>
+							<th class="border-border border-b p-2 text-left">
+								<Text variant="label">lg</Text>
+							</th>
+							<th class="border-border border-b p-2 text-left">
+								<Text variant="label">xl</Text>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						{#each ['primary', 'secondary', 'muted', 'success', 'warning', 'error'] as color (color)}
+							<tr>
+								<td class="border-border border-b p-2">
+									<Text variant="label">{color}</Text>
+								</td>
+								{#each ['xs', 'sm', 'md', 'lg', 'xl'] as size (size)}
+									<td class="border-border border-b p-2">
+										<Icon
+											size={size as 'xs' | 'sm' | 'md' | 'lg' | 'xl'}
+											color={color as
+												| 'primary'
+												| 'secondary'
+												| 'muted'
+												| 'success'
+												| 'warning'
+												| 'error'}
+										>
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="currentColor"
+												class="h-full w-full"
+											>
+												<path
+													fill-rule="evenodd"
+													d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+													clip-rule="evenodd"
+												/>
+											</svg>
+										</Icon>
+									</td>
+								{/each}
+							</tr>
+						{/each}
 					</tbody>
 				</table>
 			</div>
@@ -563,6 +1144,451 @@
 			<Card variant="code" class="mt-4">
 				&lt;Breadcrumb showHome={'{false}'} /&gt;
 			</Card>
+		</div>
+	</section>
+
+	<!-- Link Section -->
+	<section class="mb-16">
+		<Text as="h2" variant="heading" size="2xl" class="border-border mb-6 border-b pb-2">Link</Text>
+
+		<Text variant="body" class="mb-6">
+			Links provide navigation to other pages or external resources. They support multiple variants,
+			sizes, and underline styles for different use cases.
+		</Text>
+
+		<!-- Variants -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Variants</Text>
+			<div class="flex flex-wrap items-center gap-6">
+				<Link href="/example">Default Link</Link>
+				<Link href="/example" variant="subtle">Subtle Link</Link>
+				<Link href="/example" variant="muted">Muted Link</Link>
+			</div>
+			<Card variant="code" class="mt-4"
+				>&lt;Link href="/page" variant="subtle"&gt;Link&lt;/Link&gt;</Card
+			>
+		</div>
+
+		<!-- Sizes -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Sizes</Text>
+			<div class="flex flex-wrap items-center gap-6">
+				<Link href="/example" size="sm">Small</Link>
+				<Link href="/example" size="md">Medium</Link>
+				<Link href="/example" size="lg">Large</Link>
+			</div>
+			<Card variant="code" class="mt-4"
+				>&lt;Link href="/page" size="lg"&gt;Large Link&lt;/Link&gt;</Card
+			>
+		</div>
+
+		<!-- Underline Styles -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Underline Styles</Text>
+			<div class="flex flex-wrap items-center gap-6">
+				<Link href="/example" underline="hover">Hover (default)</Link>
+				<Link href="/example" underline="always">Always</Link>
+				<Link href="/example" underline="none">None</Link>
+			</div>
+			<Card variant="code" class="mt-4"
+				>&lt;Link href="/page" underline="always"&gt;Always underlined&lt;/Link&gt;</Card
+			>
+		</div>
+
+		<!-- External Links -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">External Links</Text>
+			<Text variant="body" color="subtext" class="mb-4">
+				External links automatically add target="_blank", rel="noopener noreferrer", and a visual
+				indicator.
+			</Text>
+			<div class="flex flex-wrap items-center gap-6">
+				<Link href="https://github.com" external>GitHub</Link>
+				<Link href="https://svelte.dev" external>Svelte</Link>
+			</div>
+			<Card variant="code" class="mt-4"
+				>&lt;Link href="https://github.com" external&gt;GitHub&lt;/Link&gt;</Card
+			>
+		</div>
+
+		<!-- All Combinations -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">All Combinations</Text>
+			<div class="overflow-x-auto">
+				<table class="w-full border-collapse">
+					<thead>
+						<tr>
+							<th class="border-border border-b p-2 text-left"></th>
+							<th class="border-border border-b p-2 text-left">
+								<Text variant="label">Small</Text>
+							</th>
+							<th class="border-border border-b p-2 text-left">
+								<Text variant="label">Medium</Text>
+							</th>
+							<th class="border-border border-b p-2 text-left">
+								<Text variant="label">Large</Text>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="border-border border-b p-2">
+								<Text variant="label">Default</Text>
+							</td>
+							<td class="border-border border-b p-2">
+								<Link href="/example" variant="default" size="sm">Link</Link>
+							</td>
+							<td class="border-border border-b p-2">
+								<Link href="/example" variant="default" size="md">Link</Link>
+							</td>
+							<td class="border-border border-b p-2">
+								<Link href="/example" variant="default" size="lg">Link</Link>
+							</td>
+						</tr>
+						<tr>
+							<td class="border-border border-b p-2">
+								<Text variant="label">Subtle</Text>
+							</td>
+							<td class="border-border border-b p-2">
+								<Link href="/example" variant="subtle" size="sm">Link</Link>
+							</td>
+							<td class="border-border border-b p-2">
+								<Link href="/example" variant="subtle" size="md">Link</Link>
+							</td>
+							<td class="border-border border-b p-2">
+								<Link href="/example" variant="subtle" size="lg">Link</Link>
+							</td>
+						</tr>
+						<tr>
+							<td class="border-border border-b p-2">
+								<Text variant="label">Muted</Text>
+							</td>
+							<td class="border-border border-b p-2">
+								<Link href="/example" variant="muted" size="sm">Link</Link>
+							</td>
+							<td class="border-border border-b p-2">
+								<Link href="/example" variant="muted" size="md">Link</Link>
+							</td>
+							<td class="border-border border-b p-2">
+								<Link href="/example" variant="muted" size="lg">Link</Link>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+
+	<!-- Image Section -->
+	<section class="mb-16">
+		<Text as="h2" variant="heading" size="2xl" class="border-border mb-6 border-b pb-2">Image</Text>
+
+		<Text variant="body" class="mb-6">
+			Images display visual content with consistent styling, aspect ratios, and interactive effects.
+			Supports lazy loading, various fits, and hover animations.
+		</Text>
+
+		<!-- Aspect Ratios -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Aspect Ratios</Text>
+			<div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+				<div>
+					<Image
+						src="https://placecats.com/200/200"
+						alt="Square aspect ratio"
+						aspectRatio="square"
+						rounded="md"
+					/>
+					<Text variant="caption" color="subtext" class="mt-2">square (1:1)</Text>
+				</div>
+				<div>
+					<Image
+						src="https://placecats.com/320/180"
+						alt="Video aspect ratio"
+						aspectRatio="video"
+						rounded="md"
+					/>
+					<Text variant="caption" color="subtext" class="mt-2">video (16:9)</Text>
+				</div>
+				<div>
+					<Image
+						src="https://placecats.com/150/200"
+						alt="Portrait aspect ratio"
+						aspectRatio="portrait"
+						rounded="md"
+					/>
+					<Text variant="caption" color="subtext" class="mt-2">portrait (3:4)</Text>
+				</div>
+				<div>
+					<Image
+						src="https://placecats.com/400/200"
+						alt="Wide aspect ratio"
+						aspectRatio="wide"
+						rounded="md"
+					/>
+					<Text variant="caption" color="subtext" class="mt-2">wide (2:1)</Text>
+				</div>
+			</div>
+			<Card variant="code" class="mt-4"
+				>&lt;Image src="..." alt="..." aspectRatio="square" /&gt;</Card
+			>
+		</div>
+
+		<!-- Rounded Corners -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Rounded Corners</Text>
+			<div class="flex flex-wrap items-end gap-4">
+				<div>
+					<Image
+						src="https://placecats.com/100/100"
+						alt="No rounding"
+						aspectRatio="square"
+						rounded="none"
+						class="w-24"
+					/>
+					<Text variant="caption" color="subtext" class="mt-2">none</Text>
+				</div>
+				<div>
+					<Image
+						src="https://placecats.com/100/100"
+						alt="Small rounding"
+						aspectRatio="square"
+						rounded="sm"
+						class="w-24"
+					/>
+					<Text variant="caption" color="subtext" class="mt-2">sm</Text>
+				</div>
+				<div>
+					<Image
+						src="https://placecats.com/100/100"
+						alt="Medium rounding"
+						aspectRatio="square"
+						rounded="md"
+						class="w-24"
+					/>
+					<Text variant="caption" color="subtext" class="mt-2">md</Text>
+				</div>
+				<div>
+					<Image
+						src="https://placecats.com/100/100"
+						alt="Large rounding"
+						aspectRatio="square"
+						rounded="lg"
+						class="w-24"
+					/>
+					<Text variant="caption" color="subtext" class="mt-2">lg</Text>
+				</div>
+				<div>
+					<Image
+						src="https://placecats.com/100/100"
+						alt="Full rounding (circle)"
+						aspectRatio="square"
+						rounded="full"
+						class="w-24"
+					/>
+					<Text variant="caption" color="subtext" class="mt-2">full</Text>
+				</div>
+			</div>
+			<Card variant="code" class="mt-4">&lt;Image src="..." alt="..." rounded="full" /&gt;</Card>
+		</div>
+
+		<!-- Effects -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Effects</Text>
+			<div class="flex flex-wrap gap-6">
+				<div>
+					<Image
+						src="https://placecats.com/150/150"
+						alt="With shadow"
+						aspectRatio="square"
+						rounded="md"
+						shadow
+						class="w-36"
+					/>
+					<Text variant="caption" color="subtext" class="mt-2">shadow</Text>
+				</div>
+				<div>
+					<Image
+						src="https://placecats.com/150/150"
+						alt="With hover scale"
+						aspectRatio="square"
+						rounded="md"
+						hoverScale
+						class="w-36"
+					/>
+					<Text variant="caption" color="subtext" class="mt-2">hoverScale (hover me)</Text>
+				</div>
+				<div>
+					<Image
+						src="https://placecats.com/150/150"
+						alt="Gallery style"
+						aspectRatio="square"
+						rounded="lg"
+						shadow
+						hoverScale
+						class="w-36"
+					/>
+					<Text variant="caption" color="subtext" class="mt-2">combined (gallery style)</Text>
+				</div>
+			</div>
+			<Card variant="code" class="mt-4">&lt;Image src="..." alt="..." shadow hoverScale /&gt;</Card>
+		</div>
+
+		<!-- Object Fit -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Object Fit</Text>
+			<Text variant="body" color="subtext" class="mb-4">
+				Control how the image fills its container when aspect ratios differ.
+			</Text>
+			<div
+				class="bg-surface border-border grid grid-cols-2 gap-4 rounded-md border p-4 md:grid-cols-4"
+			>
+				<div>
+					<div class="bg-border h-32 w-full">
+						<Image
+							src="https://placecats.com/200/100"
+							alt="Object cover"
+							fit="cover"
+							class="h-32"
+						/>
+					</div>
+					<Text variant="caption" color="subtext" class="mt-2">cover (default)</Text>
+				</div>
+				<div>
+					<div class="bg-border h-32 w-full">
+						<Image
+							src="https://placecats.com/200/100"
+							alt="Object contain"
+							fit="contain"
+							class="h-32"
+						/>
+					</div>
+					<Text variant="caption" color="subtext" class="mt-2">contain</Text>
+				</div>
+				<div>
+					<div class="bg-border h-32 w-full">
+						<Image src="https://placecats.com/200/100" alt="Object fill" fit="fill" class="h-32" />
+					</div>
+					<Text variant="caption" color="subtext" class="mt-2">fill</Text>
+				</div>
+				<div>
+					<div class="bg-border h-32 w-full overflow-hidden">
+						<Image src="https://placecats.com/200/100" alt="Object none" fit="none" class="h-32" />
+					</div>
+					<Text variant="caption" color="subtext" class="mt-2">none</Text>
+				</div>
+			</div>
+			<Card variant="code" class="mt-4">&lt;Image src="..." alt="..." fit="contain" /&gt;</Card>
+		</div>
+	</section>
+
+	<!-- Spinner Section -->
+	<section class="mb-16">
+		<Text as="h2" variant="heading" size="2xl" class="border-border mb-6 border-b pb-2">
+			Spinner
+		</Text>
+
+		<Text variant="body" class="mb-6">
+			Spinners indicate loading states and async operations. They support multiple sizes and colors,
+			with proper accessibility attributes for screen readers.
+		</Text>
+
+		<!-- Sizes -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Sizes</Text>
+			<div class="flex flex-wrap items-center gap-8">
+				<div class="text-center">
+					<Spinner size="sm" />
+					<Text variant="caption" color="subtext" class="mt-2">Small</Text>
+				</div>
+				<div class="text-center">
+					<Spinner size="md" />
+					<Text variant="caption" color="subtext" class="mt-2">Medium (default)</Text>
+				</div>
+				<div class="text-center">
+					<Spinner size="lg" />
+					<Text variant="caption" color="subtext" class="mt-2">Large</Text>
+				</div>
+			</div>
+			<Card variant="code" class="mt-4">&lt;Spinner size="lg" /&gt;</Card>
+		</div>
+
+		<!-- Colors -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Colors</Text>
+			<div class="flex flex-wrap items-center gap-8">
+				<div class="text-center">
+					<Spinner color="brand" />
+					<Text variant="caption" color="subtext" class="mt-2">brand (default)</Text>
+				</div>
+				<div class="text-center">
+					<Spinner color="text" />
+					<Text variant="caption" color="subtext" class="mt-2">text</Text>
+				</div>
+				<div class="text-center">
+					<Spinner color="success" />
+					<Text variant="caption" color="subtext" class="mt-2">success</Text>
+				</div>
+				<div class="text-center">
+					<Spinner color="error" />
+					<Text variant="caption" color="subtext" class="mt-2">error</Text>
+				</div>
+				<div class="text-center">
+					<Spinner color="warning" />
+					<Text variant="caption" color="subtext" class="mt-2">warning</Text>
+				</div>
+				<div class="text-center">
+					<Spinner color="info" />
+					<Text variant="caption" color="subtext" class="mt-2">info</Text>
+				</div>
+			</div>
+			<Card variant="code" class="mt-4">&lt;Spinner color="success" /&gt;</Card>
+		</div>
+
+		<!-- Accessibility -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Accessibility</Text>
+			<Text variant="body" color="subtext" class="mb-4">
+				Spinners include role="status" and aria-label for screen readers. Customize the label to
+				describe the loading context.
+			</Text>
+			<div class="flex flex-wrap items-center gap-8">
+				<div class="text-center">
+					<Spinner label="Loading content" />
+					<Text variant="caption" color="subtext" class="mt-2">Default label</Text>
+				</div>
+				<div class="text-center">
+					<Spinner label="Fetching contributions" />
+					<Text variant="caption" color="subtext" class="mt-2">Custom label</Text>
+				</div>
+			</div>
+			<Card variant="code" class="mt-4">&lt;Spinner label="Fetching contributions" /&gt;</Card>
+		</div>
+
+		<!-- Use Cases -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Common Use Cases</Text>
+			<div class="grid gap-4 md:grid-cols-2">
+				<Card variant="content">
+					{#snippet title()}
+						<Text as="h4" variant="heading" size="base">Button Loading State</Text>
+					{/snippet}
+					<div class="mt-2 flex items-center gap-2">
+						<Spinner size="sm" color="text" />
+						<Text variant="body" color="subtext">Submitting...</Text>
+					</div>
+				</Card>
+
+				<Card variant="content">
+					{#snippet title()}
+						<Text as="h4" variant="heading" size="base">Page Loading</Text>
+					{/snippet}
+					<div class="mt-4 flex flex-col items-center gap-2">
+						<Spinner size="lg" />
+						<Text variant="body" color="subtext">Loading page...</Text>
+					</div>
+				</Card>
+			</div>
 		</div>
 	</section>
 
