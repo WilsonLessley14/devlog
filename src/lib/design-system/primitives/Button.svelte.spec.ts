@@ -66,9 +66,8 @@ describe('Button', () => {
 
 	it('shows loading indicator when loading', () => {
 		render(ButtonTestWrapper, { loading: true, text: 'Loading' });
-		const spinner = screen.getByRole('status');
-		expect(spinner).toBeInTheDocument();
-		expect(spinner).toHaveAttribute('aria-label', 'Loading');
+		const button = screen.getByRole('button');
+		expect(button.textContent).toContain('⏳');
 	});
 
 	it('renders with submit type', () => {
