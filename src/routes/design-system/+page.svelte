@@ -1,5 +1,6 @@
 <script lang="ts">
 	import {
+		Avatar,
 		Badge,
 		Button,
 		Card,
@@ -1735,6 +1736,249 @@
 				&lt;Tooltip text="Accessible tooltip"&gt;&lt;Button&gt;Focus
 				me&lt;/Button&gt;&lt;/Tooltip&gt;
 			</Card>
+		</div>
+	</section>
+
+	<!-- Avatar Section -->
+	<section class="mb-16">
+		<Text as="h2" variant="heading" size="2xl" class="border-border mb-6 border-b pb-2">
+			Avatar
+		</Text>
+
+		<Text variant="body" class="mb-6">
+			Avatars display user or author photos with automatic fallback support. When no image is
+			available, initials are derived from the name. Supports multiple sizes, circle and square
+			shapes, and graceful error handling.
+		</Text>
+
+		<!-- Image vs Initials -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Image vs Initials</Text>
+			<div class="flex flex-wrap items-center gap-6">
+				<div class="text-center">
+					<Avatar src="https://placecats.com/200/200" alt="User avatar" name="Wilson Lessley" />
+					<Text variant="caption" color="subtext" class="mt-2">With image</Text>
+				</div>
+				<div class="text-center">
+					<Avatar name="Wilson Lessley" />
+					<Text variant="caption" color="subtext" class="mt-2">Initials fallback</Text>
+				</div>
+				<div class="text-center">
+					<Avatar name="Jane" />
+					<Text variant="caption" color="subtext" class="mt-2">Single initial</Text>
+				</div>
+				<div class="text-center">
+					<Avatar />
+					<Text variant="caption" color="subtext" class="mt-2">Default placeholder</Text>
+				</div>
+			</div>
+			<Card variant="code" class="mt-4"
+				>&lt;Avatar src="/photo.jpg" name="Wilson Lessley" /&gt;</Card
+			>
+		</div>
+
+		<!-- Sizes -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Sizes</Text>
+			<div class="flex flex-wrap items-center gap-6">
+				<div class="text-center">
+					<Avatar name="Wilson Lessley" size="xs" />
+					<Text variant="caption" color="subtext" class="mt-2">xs (24px)</Text>
+				</div>
+				<div class="text-center">
+					<Avatar name="Wilson Lessley" size="sm" />
+					<Text variant="caption" color="subtext" class="mt-2">sm (32px)</Text>
+				</div>
+				<div class="text-center">
+					<Avatar name="Wilson Lessley" size="md" />
+					<Text variant="caption" color="subtext" class="mt-2">md (40px)</Text>
+				</div>
+				<div class="text-center">
+					<Avatar name="Wilson Lessley" size="lg" />
+					<Text variant="caption" color="subtext" class="mt-2">lg (48px)</Text>
+				</div>
+				<div class="text-center">
+					<Avatar name="Wilson Lessley" size="xl" />
+					<Text variant="caption" color="subtext" class="mt-2">xl (64px)</Text>
+				</div>
+			</div>
+			<Card variant="code" class="mt-4">&lt;Avatar name="Wilson Lessley" size="xl" /&gt;</Card>
+		</div>
+
+		<!-- Shapes -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Shape Variants</Text>
+			<div class="flex flex-wrap items-center gap-8">
+				<div class="text-center">
+					<Avatar name="Wilson Lessley" size="lg" shape="circle" />
+					<Text variant="caption" color="subtext" class="mt-2">circle (default)</Text>
+				</div>
+				<div class="text-center">
+					<Avatar name="Wilson Lessley" size="lg" shape="square" />
+					<Text variant="caption" color="subtext" class="mt-2">square</Text>
+				</div>
+				<div class="text-center">
+					<Avatar src="https://placecats.com/200/200" alt="Circle photo" size="lg" shape="circle" />
+					<Text variant="caption" color="subtext" class="mt-2">circle + image</Text>
+				</div>
+				<div class="text-center">
+					<Avatar src="https://placecats.com/200/200" alt="Square photo" size="lg" shape="square" />
+					<Text variant="caption" color="subtext" class="mt-2">square + image</Text>
+				</div>
+			</div>
+			<Card variant="code" class="mt-4">&lt;Avatar name="WL" shape="square" /&gt;</Card>
+		</div>
+
+		<!-- Use Cases -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Common Use Cases</Text>
+			<div class="grid gap-4 md:grid-cols-2">
+				<Card variant="content">
+					{#snippet title()}
+						<Text as="h4" variant="heading" size="base">Blog Post Author</Text>
+					{/snippet}
+					<div class="mt-3 flex items-center gap-3">
+						<Avatar src="https://placecats.com/200/200" name="Wilson Lessley" size="md" />
+						<div>
+							<Text variant="body" size="sm" weight="medium">Wilson Lessley</Text>
+							<Text variant="caption" color="subtext">January 28, 2026</Text>
+						</div>
+					</div>
+				</Card>
+
+				<Card variant="content">
+					{#snippet title()}
+						<Text as="h4" variant="heading" size="base">Comment Thread</Text>
+					{/snippet}
+					<div class="mt-3 space-y-3">
+						<div class="flex items-start gap-3">
+							<Avatar name="Jane Doe" size="sm" />
+							<div>
+								<Text variant="body" size="sm" weight="medium">Jane Doe</Text>
+								<Text variant="caption" color="subtext">Great article!</Text>
+							</div>
+						</div>
+						<div class="flex items-start gap-3">
+							<Avatar name="Bob Smith" size="sm" />
+							<div>
+								<Text variant="body" size="sm" weight="medium">Bob Smith</Text>
+								<Text variant="caption" color="subtext">Thanks for sharing.</Text>
+							</div>
+						</div>
+					</div>
+				</Card>
+			</div>
+		</div>
+
+		<!-- All Combinations -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">All Combinations</Text>
+			<div class="overflow-x-auto">
+				<table class="w-full border-collapse">
+					<thead>
+						<tr>
+							<th class="border-border border-b p-2 text-left"></th>
+							<th class="border-border border-b p-2 text-left">
+								<Text variant="label">xs</Text>
+							</th>
+							<th class="border-border border-b p-2 text-left">
+								<Text variant="label">sm</Text>
+							</th>
+							<th class="border-border border-b p-2 text-left">
+								<Text variant="label">md</Text>
+							</th>
+							<th class="border-border border-b p-2 text-left">
+								<Text variant="label">lg</Text>
+							</th>
+							<th class="border-border border-b p-2 text-left">
+								<Text variant="label">xl</Text>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="border-border border-b p-2">
+								<Text variant="label">Circle + Initials</Text>
+							</td>
+							<td class="border-border border-b p-2">
+								<Avatar name="Wilson Lessley" size="xs" shape="circle" />
+							</td>
+							<td class="border-border border-b p-2">
+								<Avatar name="Wilson Lessley" size="sm" shape="circle" />
+							</td>
+							<td class="border-border border-b p-2">
+								<Avatar name="Wilson Lessley" size="md" shape="circle" />
+							</td>
+							<td class="border-border border-b p-2">
+								<Avatar name="Wilson Lessley" size="lg" shape="circle" />
+							</td>
+							<td class="border-border border-b p-2">
+								<Avatar name="Wilson Lessley" size="xl" shape="circle" />
+							</td>
+						</tr>
+						<tr>
+							<td class="border-border border-b p-2">
+								<Text variant="label">Square + Initials</Text>
+							</td>
+							<td class="border-border border-b p-2">
+								<Avatar name="Wilson Lessley" size="xs" shape="square" />
+							</td>
+							<td class="border-border border-b p-2">
+								<Avatar name="Wilson Lessley" size="sm" shape="square" />
+							</td>
+							<td class="border-border border-b p-2">
+								<Avatar name="Wilson Lessley" size="md" shape="square" />
+							</td>
+							<td class="border-border border-b p-2">
+								<Avatar name="Wilson Lessley" size="lg" shape="square" />
+							</td>
+							<td class="border-border border-b p-2">
+								<Avatar name="Wilson Lessley" size="xl" shape="square" />
+							</td>
+						</tr>
+						<tr>
+							<td class="border-border border-b p-2">
+								<Text variant="label">Circle + Image</Text>
+							</td>
+							<td class="border-border border-b p-2">
+								<Avatar src="https://placecats.com/200/200" name="WL" size="xs" shape="circle" />
+							</td>
+							<td class="border-border border-b p-2">
+								<Avatar src="https://placecats.com/200/200" name="WL" size="sm" shape="circle" />
+							</td>
+							<td class="border-border border-b p-2">
+								<Avatar src="https://placecats.com/200/200" name="WL" size="md" shape="circle" />
+							</td>
+							<td class="border-border border-b p-2">
+								<Avatar src="https://placecats.com/200/200" name="WL" size="lg" shape="circle" />
+							</td>
+							<td class="border-border border-b p-2">
+								<Avatar src="https://placecats.com/200/200" name="WL" size="xl" shape="circle" />
+							</td>
+						</tr>
+						<tr>
+							<td class="border-border border-b p-2">
+								<Text variant="label">Square + Image</Text>
+							</td>
+							<td class="border-border border-b p-2">
+								<Avatar src="https://placecats.com/200/200" name="WL" size="xs" shape="square" />
+							</td>
+							<td class="border-border border-b p-2">
+								<Avatar src="https://placecats.com/200/200" name="WL" size="sm" shape="square" />
+							</td>
+							<td class="border-border border-b p-2">
+								<Avatar src="https://placecats.com/200/200" name="WL" size="md" shape="square" />
+							</td>
+							<td class="border-border border-b p-2">
+								<Avatar src="https://placecats.com/200/200" name="WL" size="lg" shape="square" />
+							</td>
+							<td class="border-border border-b p-2">
+								<Avatar src="https://placecats.com/200/200" name="WL" size="xl" shape="square" />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</section>
 
