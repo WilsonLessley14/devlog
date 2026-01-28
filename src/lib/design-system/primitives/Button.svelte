@@ -2,7 +2,6 @@
 	import type { ButtonVariant, Size } from '../tokens';
 	import { classNames } from '../utils';
 	import type { ButtonProps } from './ButtonProps.ts';
-	import Spinner from './Spinner.svelte';
 
 	let {
 		variant = 'primary',
@@ -47,9 +46,7 @@
 	{onclick}
 >
 	{#if loading}
-		<span class="mr-2">
-			<Spinner size="sm" color="text" label="Loading" />
-		</span>
+		<span class="mr-2" aria-hidden="true">⏳</span>
 	{/if}
 	{#if children}
 		{@render children()}

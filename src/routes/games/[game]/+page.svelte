@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { Link } from '$lib/design-system';
-	import { loadGameComponent } from '$lib/common/games/loadGameComponent';
 
 	export let data: { game: string };
 
 	let GameComponent: typeof import('svelte').SvelteComponent | null = null;
 	let loadError: string | null = null;
+
+	import { loadGameComponent } from '$lib/common/games/loadGameComponent';
 
 	/**
 	 * Loads the Svelte game component dynamically using the helper.
@@ -20,7 +20,8 @@
 	});
 </script>
 
-<nav><Link href="/games">← All Games</Link></nav>
+<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+<nav><a href="/games">← All Games</a></nav>
 <h1>{data.game}</h1>
 {#if loadError}
 	<p style="color: red">{loadError}</p>
