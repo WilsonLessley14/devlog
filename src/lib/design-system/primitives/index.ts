@@ -8,5 +8,6 @@ export { default as Image } from './Image.svelte';
 export { default as Input } from './Input.svelte';
 export { default as Link } from './Link.svelte';
 export { default as Spinner } from './Spinner.svelte';
+export { default as Tag } from './Tag.svelte';
 export { default as Text } from './Text.svelte';
 export { default as Tooltip } from './Tooltip.svelte';

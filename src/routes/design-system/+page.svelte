@@ -9,6 +9,7 @@
 		Input,
 		Link,
 		Spinner,
+		Tag,
 		Text,
 		Tooltip
 	} from '$lib/design-system';
@@ -1974,6 +1975,231 @@
 							</td>
 							<td class="border-border border-b p-2">
 								<Avatar src="https://placecats.com/200/200" name="WL" size="xl" shape="square" />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+
+	<!-- Tag Section -->
+	<section class="mb-16">
+		<Text as="h2" variant="heading" size="2xl" class="border-border mb-6 border-b pb-2">Tag</Text>
+
+		<Text variant="body" class="mb-6">
+			Tags are compact, interactive elements used for filtering, categorization, and labeling. They
+			support multiple semantic variants, sizes, removable and clickable states.
+		</Text>
+
+		<!-- Variants -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Variants</Text>
+			<div class="flex flex-wrap items-center gap-3">
+				<Tag variant="default" label="Default" />
+				<Tag variant="primary" label="Primary" />
+				<Tag variant="success" label="Success" />
+				<Tag variant="warning" label="Warning" />
+				<Tag variant="error" label="Error" />
+				<Tag variant="info" label="Info" />
+			</div>
+			<Card variant="code" class="mt-4">&lt;Tag variant="success" label="Success" /&gt;</Card>
+		</div>
+
+		<!-- Sizes -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Sizes</Text>
+			<div class="flex flex-wrap items-center gap-3">
+				<Tag size="sm" label="Small" />
+				<Tag size="md" label="Medium" />
+				<Tag size="lg" label="Large" />
+			</div>
+			<Card variant="code" class="mt-4">&lt;Tag size="lg" label="Large" /&gt;</Card>
+		</div>
+
+		<!-- Removable -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Removable</Text>
+			<Text variant="body" color="subtext" class="mb-4">
+				Tags can display a remove button for dismissible content like filters or selections.
+			</Text>
+			<div class="flex flex-wrap items-center gap-3">
+				<Tag variant="default" label="Filter" removable />
+				<Tag variant="primary" label="TypeScript" removable />
+				<Tag variant="success" label="Active" removable />
+			</div>
+			<Card variant="code" class="mt-4"
+				>&lt;Tag label="Filter" removable onremove=&#123;handleRemove&#125; /&gt;</Card
+			>
+		</div>
+
+		<!-- Clickable -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Clickable</Text>
+			<Text variant="body" color="subtext" class="mb-4">
+				When an onclick handler is provided, tags render as buttons with hover effects.
+			</Text>
+			<div class="flex flex-wrap items-center gap-3">
+				<Tag label="Click me" onclick={() => {}} />
+				<Tag variant="primary" label="Interactive" onclick={() => {}} />
+				<Tag variant="info" label="Selectable" onclick={() => {}} />
+			</div>
+			<Card variant="code" class="mt-4"
+				>&lt;Tag label="Click me" onclick=&#123;handleClick&#125; /&gt;</Card
+			>
+		</div>
+
+		<!-- States -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">States</Text>
+			<div class="flex flex-wrap items-center gap-3">
+				<Tag label="Normal" />
+				<Tag label="Disabled" disabled />
+				<Tag label="Clickable Disabled" onclick={() => {}} disabled />
+				<Tag label="Removable Disabled" removable disabled />
+			</div>
+			<Card variant="code" class="mt-4">&lt;Tag label="Disabled" disabled /&gt;</Card>
+		</div>
+
+		<!-- Use Cases -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">Common Use Cases</Text>
+
+			<!-- Category Tags -->
+			<div class="mb-6">
+				<Text variant="label" class="mb-3">Blog Post Categories</Text>
+				<div class="flex flex-wrap gap-2">
+					<Tag label="TypeScript" />
+					<Tag label="Svelte" />
+					<Tag label="JavaScript" />
+					<Tag label="Web Development" />
+				</div>
+			</div>
+
+			<!-- Filter Tags -->
+			<div class="mb-6">
+				<Text variant="label" class="mb-3">Active Filters</Text>
+				<div class="flex flex-wrap gap-2">
+					<Tag variant="primary" label="Price: $50-$100" removable />
+					<Tag variant="primary" label="Color: Blue" removable />
+					<Tag variant="primary" label="Size: Medium" removable />
+				</div>
+			</div>
+
+			<!-- Status Tags -->
+			<div class="mb-6">
+				<Text variant="label" class="mb-3">Status Indicators</Text>
+				<div class="flex flex-wrap gap-2">
+					<Tag variant="success" label="Published" />
+					<Tag variant="warning" label="Draft" />
+					<Tag variant="error" label="Archived" />
+					<Tag variant="info" label="New" />
+				</div>
+			</div>
+		</div>
+
+		<!-- All Combinations -->
+		<div class="mb-8">
+			<Text as="h3" variant="heading" size="lg" class="mb-4">All Combinations</Text>
+			<div class="overflow-x-auto">
+				<table class="w-full border-collapse">
+					<thead>
+						<tr>
+							<th class="border-border border-b p-2 text-left"></th>
+							<th class="border-border border-b p-2 text-left">
+								<Text variant="label">Small</Text>
+							</th>
+							<th class="border-border border-b p-2 text-left">
+								<Text variant="label">Medium</Text>
+							</th>
+							<th class="border-border border-b p-2 text-left">
+								<Text variant="label">Large</Text>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="border-border border-b p-2">
+								<Text variant="label">Default</Text>
+							</td>
+							<td class="border-border border-b p-2">
+								<Tag variant="default" size="sm" label="Tag" />
+							</td>
+							<td class="border-border border-b p-2">
+								<Tag variant="default" size="md" label="Tag" />
+							</td>
+							<td class="border-border border-b p-2">
+								<Tag variant="default" size="lg" label="Tag" />
+							</td>
+						</tr>
+						<tr>
+							<td class="border-border border-b p-2">
+								<Text variant="label">Primary</Text>
+							</td>
+							<td class="border-border border-b p-2">
+								<Tag variant="primary" size="sm" label="Tag" />
+							</td>
+							<td class="border-border border-b p-2">
+								<Tag variant="primary" size="md" label="Tag" />
+							</td>
+							<td class="border-border border-b p-2">
+								<Tag variant="primary" size="lg" label="Tag" />
+							</td>
+						</tr>
+						<tr>
+							<td class="border-border border-b p-2">
+								<Text variant="label">Success</Text>
+							</td>
+							<td class="border-border border-b p-2">
+								<Tag variant="success" size="sm" label="Tag" />
+							</td>
+							<td class="border-border border-b p-2">
+								<Tag variant="success" size="md" label="Tag" />
+							</td>
+							<td class="border-border border-b p-2">
+								<Tag variant="success" size="lg" label="Tag" />
+							</td>
+						</tr>
+						<tr>
+							<td class="border-border border-b p-2">
+								<Text variant="label">Warning</Text>
+							</td>
+							<td class="border-border border-b p-2">
+								<Tag variant="warning" size="sm" label="Tag" />
+							</td>
+							<td class="border-border border-b p-2">
+								<Tag variant="warning" size="md" label="Tag" />
+							</td>
+							<td class="border-border border-b p-2">
+								<Tag variant="warning" size="lg" label="Tag" />
+							</td>
+						</tr>
+						<tr>
+							<td class="border-border border-b p-2">
+								<Text variant="label">Error</Text>
+							</td>
+							<td class="border-border border-b p-2">
+								<Tag variant="error" size="sm" label="Tag" />
+							</td>
+							<td class="border-border border-b p-2">
+								<Tag variant="error" size="md" label="Tag" />
+							</td>
+							<td class="border-border border-b p-2">
+								<Tag variant="error" size="lg" label="Tag" />
+							</td>
+						</tr>
+						<tr>
+							<td class="border-border border-b p-2">
+								<Text variant="label">Info</Text>
+							</td>
+							<td class="border-border border-b p-2">
+								<Tag variant="info" size="sm" label="Tag" />
+							</td>
+							<td class="border-border border-b p-2">
+								<Tag variant="info" size="md" label="Tag" />
+							</td>
+							<td class="border-border border-b p-2">
+								<Tag variant="info" size="lg" label="Tag" />
 							</td>
 						</tr>
 					</tbody>
