@@ -127,7 +127,7 @@ npm scripts work directly too (`npm run dev`, `npm test`, `npm run lint`).
 - **Blog post** - add a `.md` file to `/src/lib/blogposts/` (filename → URL slug)
 - **Game** - add a Svelte component to `/src/lib/common/games/` (auto-discovered)
 - **Cat photo** - add an image to `/src/lib/assets/`
-- **Theme** - add a `[data-theme='name']` block in `/src/lib/themes/`, import it in `app.css`, and add it to the nav theme cycle
+- **Theme** - themes live in the design system (`@wl/frontend-system`). Build one in its `/theme-builder`, commit it there, bump the pin (`devenv update frontend-system` + reinstall), then add the name to the nav theme cycle in `+layout.svelte`
 
 ## License
 

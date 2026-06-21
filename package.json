@@ -44,7 +44,7 @@
 	},
 	"dependencies": {
 		"@lucide/svelte": "^1.21.0",
-		"@wl/frontend-system": "file:../../../../../nix/store/3c5qr5rl34y7a3zq9fsxxp5y7yr2na2d-frontend-system-0.2.0/frontend-system.tgz",
+		"@wl/frontend-system": "file:../../../../../nix/store/hjqd47s0ydw9hgls6p8k46bg21s52s89-frontend-system-0.3.0/frontend-system.tgz",
 		"bits-ui": "^2.18.1",
 		"clsx": "^2.1.1",
 		"marked": "^17.0.1",

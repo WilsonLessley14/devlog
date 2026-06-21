@@ -27,7 +27,6 @@ Personal portfolio and blog built with SvelteKit 2.16, Svelte 5.0, TypeScript, a
 - `/src/lib/blogposts/` - Markdown blog posts (filename becomes URL slug)
 - `/src/lib/common/games/` - Game components (auto-discovered)
 - `/src/lib/assets/` - Static images for cat gallery
-- `/src/lib/themes/` - Site-specific color themes (e.g. pink) on the token contract
 - `/src/lib/utils/` - Utility functions (GitHub API, HTTP service)
 - `/src/lib/AppBreadcrumb.svelte` - Route-derived breadcrumb built on design-system primitives
 - `/src/app.css` - Tailwind import + design-system styles + site global element styling
@@ -40,7 +39,7 @@ Components and tokens come from the `@wl/frontend-system` package — see its re
 - **Import**: `import { Button, Card, Input, Text, Stack, ... } from '@wl/frontend-system';`
 - **Styles**: `app.css` does `@import 'tailwindcss';` then `@import '@wl/frontend-system/styles.css';`
 - **Theming**: set `data-mode` (`soft`/`hard`) and `data-theme` (`light`/`dark`/`pink`) on `<html>`.
-  Don't edit components — add/adjust tokens. Site-specific themes live in `/src/lib/themes/`.
+  Don't edit components — add/adjust tokens. Themes (incl. `pink`) ship from the design system.
 - **Pinning**: `devenv.yaml` declares the `frontend-system` flake input; `devenv.lock` pins it;
   the build is exposed as `$FRONTEND_SYSTEM_TGZ`. Update with `devenv update` + reinstall the tarball.
 
@@ -69,7 +68,7 @@ Components and tokens come from the `@wl/frontend-system` package — see its re
 
 - **GitHub Token**: Required in `.env` as `GITHUB_FINE_GRAIN_ACCESS_TOKEN` for the contributions feature
 - **Theming**: `light`/`dark`/`pink` color themes × `soft`/`hard` character modes, driven by the
-  design system's tokens; toggled in the nav. Site themes are in `/src/lib/themes/`.
+  design system's tokens; toggled in the nav. Themes are defined in the design system.
 - **Blog Posts**: `.md` files in `/src/lib/blogposts/`; filename becomes the URL slug; parsed with marked at runtime
 - **Games**: Auto-discovered Svelte components in `/src/lib/common/games/`; current: Click Counter, Word Frequency Game (DataMuse API)
 - **MDsvex**: Processes `.md`/`.svx` with Svelte component support
@@ -105,7 +104,7 @@ Components and tokens come from the `@wl/frontend-system` package — see its re
 - **New Blog Post**: Create `.md` file in `/src/lib/blogposts/`
 - **New Game**: Create Svelte component in `/src/lib/common/games/`
 - **Cat Photos**: Add images to `/src/lib/assets/`
-- **New Theme**: Add a `[data-theme='name']` block in `/src/lib/themes/`, import it in `app.css`, and add it to the nav theme cycle
+- **New Theme**: Build it in the design system's `/theme-builder` and commit it there, bump the pin, then add the name to the nav theme cycle in `+layout.svelte`
 
 ### Development
 
