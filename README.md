@@ -10,7 +10,7 @@ A personal portfolio and blog website built with SvelteKit, featuring a blog pla
   - Click Counter
   - Word Frequency Game (powered by DataMuse API)
 - **Cat Gallery** - Responsive photo gallery with lazy loading and hover effects
-- **Theme System** - Light/dark mode toggle with custom color schemes
+- **Theming** - `light` / `dark` / `pink` color themes × `soft` / `hard` character modes, all driven by design tokens (toggle in the nav)
 
 ## Technology Stack
 
@@ -21,10 +21,10 @@ A personal portfolio and blog website built with SvelteKit, featuring a blog pla
 - **TypeScript 5.0** - Type-safe development
 - **Vite 6.2** - Lightning-fast build tooling
 
-### Styling
+### Design System
 
-- **Tailwind CSS 4.0** - Utility-first CSS framework
-- Custom CSS variables for theming
+- **[@wl/frontend-system](https://github.com/WilsonLessley14/frontend-system)** - the shared design system, consumed as an installed package and pinned via devenv (a Nix flake input). Provides the components (Button, Card, Input, Text, Breadcrumb, layout primitives) and the two-axis token system (soft/hard × light/dark). The blog customizes purely through tokens — components are not edited here.
+- **Tailwind CSS 4.0** - utility layer; the design system ships the `@theme` bridge and tokens.
 
 ### Content Processing
 
@@ -35,7 +35,6 @@ A personal portfolio and blog website built with SvelteKit, featuring a blog pla
 
 - **Vitest 3.0** - Unit testing with dual workspaces (client/server)
 - **@testing-library/svelte** - Component testing utilities
-- **Storybook 8.6** - Component development environment
 - **ESLint** + **Prettier** - Code linting and formatting
 
 ## Getting Started
@@ -50,60 +49,32 @@ This project uses [devenv](https://devenv.sh/) for reproducible development envi
 ### Installation
 
 ```bash
-# Clone the repository
-git clone <repository-url>
+git clone git@github.com:WilsonLessley14/devlog.git
 cd devlog
 
-# Allow direnv to load the development environment
-direnv allow
+# Load the dev environment (Node 22 + the pinned design-system tarball)
+direnv allow            # or: devenv shell
 
-# Dependencies will be automatically installed via devenv
-# If not, run: npm install
+# Install dependencies, including the pinned design system
+npm install
+npm install "$FRONTEND_SYSTEM_TGZ"   # design-system tarball exposed by devenv
 ```
 
-The development environment includes:
-
-- Node.js 22
-- npm with automatic dependency installation
-- TypeScript support
-- just command runner
-- Pre-commit hooks for prettier and eslint
+`$FRONTEND_SYSTEM_TGZ` is the design-system build pinned by `devenv.lock` (the `frontend-system` flake input in `devenv.yaml`). Bump it with `devenv update` then reinstall the tarball.
 
 ### Environment Variables
 
-Create a `.env` file in the root directory:
-
 ```env
-# Required for GitHub contributions feature
+# Required for the GitHub contributions feature
 GITHUB_FINE_GRAIN_ACCESS_TOKEN=your_github_token_here
 ```
 
 ### Development
 
-Start the development server using just:
-
 ```bash
-# Start dev server
-just dev
-
-# Or open in browser automatically
-just dev-open
-```
-
-The app will be available at `http://localhost:5173`
-
-### Building
-
-Create a production build:
-
-```bash
-just build
-```
-
-Preview the production build:
-
-```bash
-just preview
+just dev          # start dev server (http://localhost:5173)
+just build        # production build
+just preview      # preview the production build
 ```
 
 ## Project Structure
@@ -111,92 +82,52 @@ just preview
 ```
 /src
   /routes/              # SvelteKit pages (file-based routing)
-    /+layout.svelte     # Root layout with navigation
+    /+layout.svelte     # Root layout: nav + mode/theme toggles + breadcrumb
     /+page.svelte       # Home page
     /blog/              # Blog list and individual posts
     /contributions/     # GitHub contribution tracker
     /cats/              # Photo gallery
     /games/             # Games platform
+    /design-system/     # Live showcase of the design system in this site
   /lib/
-    /blogposts/         # Markdown blog post files
+    /blogposts/         # Markdown blog post files (filename → URL slug)
     /assets/            # Static images
-    /common/games/      # Game components
+    /common/games/      # Game components (auto-discovered)
+    /themes/            # Site-specific color themes (e.g. pink) on the token contract
     /utils/             # Utility functions (GitHub API, HTTP service)
-  /stories/             # Storybook component stories
-  /app.css              # Global styles and theme variables
+    AppBreadcrumb.svelte # Route-derived breadcrumb built on the design system
+  /app.css              # Tailwind + design-system styles + site globals
 ```
+
+Components and tokens come from `@wl/frontend-system`; this repo holds content, routes, and site-specific glue.
 
 ## Development Commands
 
-This project uses [just](https://github.com/casey/just) as a command runner. Run `just` to see all available commands.
-
-### Common Commands
+This project uses [just](https://github.com/casey/just) as a command runner. Run `just` to see all commands.
 
 ```bash
 # Development
-just dev              # Start development server
-just dev-open         # Start dev server and open in browser
-just build            # Build for production
-just preview          # Preview production build
+just dev / just build / just preview
 
 # Testing
-just test             # Run all tests
-just test-watch       # Run tests in watch mode
+just test             # run all tests (vitest)
+just test-watch       # watch mode
 
 # Code Quality
-just lint             # Lint code
-just format           # Format code
-just check            # Type check with svelte-check
-
-# Storybook
-just storybook        # Start Storybook dev server
-just storybook-build  # Build Storybook
+just lint / just format / just check
 
 # Dependencies
-just install          # Install dependencies
-just outdated         # Check for outdated packages
-just update           # Update dependencies
-just clean-install    # Clean reinstall
-
-# Utility
-just info             # Show project info
-just clean            # Clean build artifacts
-just fresh            # Clean install + start dev
+just install / just outdated / just update
 ```
 
-You can also use npm scripts directly if preferred:
-
-```bash
-npm run dev
-npm test
-npm run lint
-```
+npm scripts work directly too (`npm run dev`, `npm test`, `npm run lint`).
 
 ## Adding Content
 
-### Blog Posts
-
-Add new blog posts to `/src/lib/blogposts/` as `.md` files. The filename will become the URL slug.
-
-Example structure:
-
-```markdown
-# Your Blog Post Title
-
-Your content here...
-```
-
-### Games
-
-Add new game components to `/src/lib/common/games/` as Svelte components. They will be automatically discovered and listed on the games page.
-
-### Cat Photos
-
-Add images to `/src/lib/assets/` - they will be automatically included in the cat gallery.
-
-## Contributing
-
-This is a personal portfolio project, but suggestions and improvements are welcome.
+- **Blog post** - add a `.md` file to `/src/lib/blogposts/` (filename → URL slug)
+- **Game** - add a Svelte component to `/src/lib/common/games/` (auto-discovered)
+- **Cat photo** - add an image to `/src/lib/assets/`
+- **Theme** - add a `[data-theme='name']` block in `/src/lib/themes/`, import it in `app.css`, and add it to the nav theme cycle
 
 ## License
 

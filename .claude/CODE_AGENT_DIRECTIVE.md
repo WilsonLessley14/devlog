@@ -10,10 +10,9 @@ When spawned to implement a task, Code Agents MUST:
 
 ### 1. Planning Phase
 
-1. Read the task requirements (from Beads, user instructions, or context)
+1. Read the task requirements (from user instructions or context)
 2. Explore the codebase to understand context
 3. Create a brief implementation plan
-4. If using Beads: Update status to `in_progress`
 
 ### 2. Implementation Phase
 
@@ -76,7 +75,6 @@ PROTOCOL:
    - Understand requirements fully
    - Explore codebase for context
    - Identify files to create/modify
-   - [IF USING BEADS] Update task status to in_progress
 
 2. Implementation:
    - Write ALL code using Write/Edit tools

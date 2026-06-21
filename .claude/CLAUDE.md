@@ -7,9 +7,9 @@ Personal portfolio and blog built with SvelteKit 2.16, Svelte 5.0, TypeScript, a
 ## Architecture
 
 - **Framework**: SvelteKit with file-based routing
-- **Styling**: Tailwind CSS 4.0 with custom theme variables (light/dark mode)
+- **Design System**: [@wl/frontend-system](https://github.com/WilsonLessley14/frontend-system) — consumed as an installed package, pinned via devenv (a Nix flake input). Provides components + the two-axis token system. **Not edited here; customize through tokens.**
+- **Styling**: Tailwind CSS 4.0; the design system ships the `@theme` bridge and tokens
 - **Testing**: Vitest with dual workspaces (client/server)
-- **Dev Tools**: Storybook for component development
 - **Build**: Vite 6.2
 - **Package Manager**: npm with Nix/devenv for reproducible environments
 - **Command Runner**: just (justfile) for all development commands
@@ -17,105 +17,69 @@ Personal portfolio and blog built with SvelteKit 2.16, Svelte 5.0, TypeScript, a
 ## Key Directories
 
 - `/src/routes/` - SvelteKit pages (file-based routing)
-  - `/+layout.svelte` - Root layout with navigation
+  - `/+layout.svelte` - Root layout: nav + mode/theme toggles + breadcrumb
   - `/+page.svelte` - Home page
   - `/blog/` - Blog list and individual posts
   - `/contributions/` - GitHub contribution tracker
   - `/cats/` - Photo gallery
   - `/games/` - Games platform
+  - `/design-system/` - Live showcase of the design system as used in this site
 - `/src/lib/blogposts/` - Markdown blog posts (filename becomes URL slug)
 - `/src/lib/common/games/` - Game components (auto-discovered)
 - `/src/lib/assets/` - Static images for cat gallery
+- `/src/lib/themes/` - Site-specific color themes (e.g. pink) on the token contract
 - `/src/lib/utils/` - Utility functions (GitHub API, HTTP service)
-- `/src/stories/` - Storybook component stories
-- `/src/app.css` - Global styles and theme variables
-- `/src/lib/design-system/` - Design system primitives (Button, Text, Input, Card)
+- `/src/lib/AppBreadcrumb.svelte` - Route-derived breadcrumb built on design-system primitives
+- `/src/app.css` - Tailwind import + design-system styles + site global element styling
 
 ## Design System
 
-The project has a custom design system with reusable primitive components.
+Components and tokens come from the `@wl/frontend-system` package — see its repo and
+`DESIGN_SYSTEM.md` for the architecture. This repo only consumes it.
 
-- **Location**: `/src/lib/design-system/primitives/`
-- **Components**: Button, Text, Input, Card
-- **Showcase**: Live documentation at `/design-system` route
-- **Storybook**: Component stories in `/src/stories/`
-
-### Creating New Components
-
-See `.claude/skills/design-system-component.md` for the complete workflow:
-
-1. Create component + props interface
-2. Export from design system index
-3. Write unit tests (`.svelte.spec.ts`)
-4. Create Storybook stories
-5. Add section to showcase page
-6. Validate with `just check`, `just lint`, `just test`
-7. Verify visually with Browser MCP
+- **Import**: `import { Button, Card, Input, Text, Stack, ... } from '@wl/frontend-system';`
+- **Styles**: `app.css` does `@import 'tailwindcss';` then `@import '@wl/frontend-system/styles.css';`
+- **Theming**: set `data-mode` (`soft`/`hard`) and `data-theme` (`light`/`dark`/`pink`) on `<html>`.
+  Don't edit components — add/adjust tokens. Site-specific themes live in `/src/lib/themes/`.
+- **Pinning**: `devenv.yaml` declares the `frontend-system` flake input; `devenv.lock` pins it;
+  the build is exposed as `$FRONTEND_SYSTEM_TGZ`. Update with `devenv update` + reinstall the tarball.
 
 ## Development Workflow
 
 - **Command Runner**: Use `just` for all commands (preferred over npm directly)
   - `just dev` - Start development server
-  - `just test` - Run all tests
-  - `just test-watch` - Run tests in watch mode
-  - `just lint` - Lint code with eslint and prettier
-  - `just format` - Format code with prettier
+  - `just test` / `just test-watch` - Run tests (vitest)
+  - `just lint` - Lint with eslint and prettier
+  - `just format` - Format with prettier
   - `just check` - Type check with svelte-check
-  - `just storybook` - Start Storybook dev server
   - `just build` - Build for production
 - **Pre-commit hooks**: Automatically run prettier and eslint
 - **Environment Setup**: Uses Nix/devenv for reproducible environments (direnv integration)
 
-## Issue Tracking (Beads)
-
-- **Issue Tracker**: Uses Beads (`bd`) for git-native issue tracking
-- **Issue Prefix**: `devlog-` (e.g., devlog-1, devlog-2)
-- **Storage**: Issues stored in `.beads/` directory (git-tracked)
-- **Claude Integration**: Beads hooks automatically inject workflow context into Claude sessions
-- **Common Commands**:
-  - `bd list` - List all issues
-  - `bd show <id>` - Show issue details
-  - `bd new "<title>"` - Create new issue
-  - `bd close <id>` - Close an issue
-  - `bd search <query>` - Search issues
-  - `bd tree` - Show issue dependency tree
-  - `bd prime` - Get workflow context for Claude
-  - `bd status` - Show current workflow status
-- **Workflow**: Beads integrates with git hooks and Claude Code for seamless issue management
-- **Documentation**: See `.beads/README.md` for detailed Beads usage
-
 ## Code Conventions
 
 - **TypeScript**: All code is type-safe with TypeScript 5.0
-- **Svelte 5**: Use modern Svelte 5 features and reactivity patterns
-- **Styling**: Tailwind utility classes for all styling
+- **Svelte 5**: Use modern Svelte 5 features and reactivity patterns (runes)
+- **Styling**: Tailwind utility classes + design-system semantic tokens (`bg-background`,
+  `text-foreground`, `text-primary`, `border-border`, …). Don't reintroduce bespoke color vars.
 - **Testing**: Vitest for unit tests, @testing-library/svelte for component tests
-- **Formatting**: Prettier with specific configuration
-- **Linting**: ESLint with Svelte plugin
+- **Formatting**: Prettier; **Linting**: ESLint with Svelte plugin
 
 ## Important Notes
 
-- **GitHub Token**: Required in `.env` as `GITHUB_FINE_GRAIN_ACCESS_TOKEN` for contributions feature
-- **Theme System**: Uses CSS variables defined in `/src/app.css` for light/dark mode
-- **Blog Posts**:
-  - Created as `.md` files in `/src/lib/blogposts/`
-  - Filename becomes URL slug
-  - Processed with marked at runtime
-- **Games**:
-  - Auto-discovered Svelte components in `/src/lib/common/games/`
-  - Dynamic component loading
-  - Current games: Click Counter, Word Frequency Game (DataMuse API)
-- **MDsvex**: Processes markdown with Svelte component support
-- **Cat Gallery**: Images in `/src/lib/assets/` automatically included with lazy loading
+- **GitHub Token**: Required in `.env` as `GITHUB_FINE_GRAIN_ACCESS_TOKEN` for the contributions feature
+- **Theming**: `light`/`dark`/`pink` color themes × `soft`/`hard` character modes, driven by the
+  design system's tokens; toggled in the nav. Site themes are in `/src/lib/themes/`.
+- **Blog Posts**: `.md` files in `/src/lib/blogposts/`; filename becomes the URL slug; parsed with marked at runtime
+- **Games**: Auto-discovered Svelte components in `/src/lib/common/games/`; current: Click Counter, Word Frequency Game (DataMuse API)
+- **MDsvex**: Processes `.md`/`.svx` with Svelte component support
+- **Cat Gallery**: Images in `/src/lib/assets/` auto-included with lazy loading
 
 ## Technology Stack Details
 
 ### Core Framework
 
-- Svelte 5.0 - Modern reactive component framework
-- SvelteKit 2.16 - Full-stack framework with file-based routing
-- TypeScript 5.0 - Type-safe development
-- Vite 6.2 - Lightning-fast build tooling
+- Svelte 5.0, SvelteKit 2.16, TypeScript 5.0, Vite 6.2
 
 ### Content Processing
 
@@ -126,13 +90,11 @@ See `.claude/skills/design-system-component.md` for the complete workflow:
 
 - Vitest 3.0 - Unit testing with dual workspaces
 - @testing-library/svelte - Component testing utilities
-- Storybook 8.6 - Component development environment
 - ESLint + Prettier - Code linting and formatting
 
 ### Development Tools
 
-- Beads (bd) 0.27.0 - Git-native issue tracker with Claude Code integration
-- Nix/devenv - Reproducible development environments
+- Nix/devenv - Reproducible development environments (also pins the design system)
 - Just - Command runner for development tasks
 - direnv - Automatic environment loading
 
@@ -143,81 +105,35 @@ See `.claude/skills/design-system-component.md` for the complete workflow:
 - **New Blog Post**: Create `.md` file in `/src/lib/blogposts/`
 - **New Game**: Create Svelte component in `/src/lib/common/games/`
 - **Cat Photos**: Add images to `/src/lib/assets/`
+- **New Theme**: Add a `[data-theme='name']` block in `/src/lib/themes/`, import it in `app.css`, and add it to the nav theme cycle
 
 ### Development
 
-- **Start Dev Server**: `just dev` or `just dev-open` (opens browser)
+- **Start Dev Server**: `just dev`
 - **Run Tests**: `just test` or `just test-watch`
-- **Type Check**: `just check` or `just check-watch`
-- **Component Development**: `just storybook`
-
-### Code Quality
-
-- **Format Code**: `just format`
-- **Lint Code**: `just lint`
-- **Full Check**: Run `just check`, `just lint`, and `just test`
-
-### Dependencies
-
-- **Check Outdated**: `just outdated`
-- **Update Deps**: `just update`
-- **Clean Install**: `just clean-install` (removes node_modules and reinstalls)
-
-### Build & Deploy
-
-- **Production Build**: `just build`
-- **Preview Build**: `just preview`
-- **Storybook Build**: `just storybook-build`
-
-### Issue Management
-
-- **List Issues**: `bd list` or `bd list --open`
-- **Create Issue**: `bd new "Issue title"`
-- **View Issue**: `bd show devlog-1`
-- **Close Issue**: `bd close devlog-1`
-- **Search Issues**: `bd search "keyword"`
-- **Get Workflow Context**: `bd prime` (for Claude Code)
-- **View Issue Tree**: `bd tree` (shows dependencies)
+- **Type Check**: `just check`
+- **Format / Lint**: `just format` / `just lint`
 
 ## Features
 
 ### Blog Platform
 
-- Markdown-based blog posts
-- Dynamic routing
-- Server-side rendering
-- Runtime markdown parsing with marked
+- Markdown-based posts, dynamic routing, SSR, runtime parsing with marked
 
 ### GitHub Contributions
 
-- Real-time contribution statistics
-- Fetched from GitHub's GraphQL API
-- Grouped by repository and date
-- Requires GitHub token in `.env`
+- Real-time contribution statistics from GitHub's GraphQL API, grouped by repo and date (requires token)
 
 ### Games Platform
 
-- Interactive games with dynamic component loading
-- Click Counter game
-- Word Frequency Game (powered by DataMuse API)
-- Automatically discovers new games in `/src/lib/common/games/`
+- Interactive games with dynamic component loading; auto-discovers new games in `/src/lib/common/games/`
 
 ### Cat Gallery
 
-- Responsive photo gallery
-- Lazy loading images
-- Hover effects
-- Auto-includes images from `/src/lib/assets/`
-
-### Theme System
-
-- Light/dark mode toggle
-- Custom color schemes
-- CSS variables for theming
+- Responsive photo gallery with lazy loading; auto-includes images from `/src/lib/assets/`
 
 ## Project Info
 
 - **License**: MIT
-- **Environment**: Nix + devenv for reproducible development
-- **Node Version**: 22 (managed by devenv)
-- create unit tests for any new component created within the design-system
+- **Environment**: Nix + devenv (Node 22); design system pinned via devenv
+- Add unit tests for new utilities and games where it makes sense.
