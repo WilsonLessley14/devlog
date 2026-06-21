@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import '@wl/frontend-system/styles.css';
+@import './lib/themes/pink.css';
 
 /* devlog-specific tokens the design system doesn't define. */
 :root {

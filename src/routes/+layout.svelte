@@ -12,11 +12,12 @@
 
 	let { children } = $props();
 
-	let theme = $state<'light' | 'dark'>('light');
+	const themes = ['light', 'dark', 'pink'] as const;
+	let theme = $state<(typeof themes)[number]>('light');
 	let mode = $state<'soft' | 'hard'>('soft');
 
-	function toggleTheme() {
-		theme = theme === 'light' ? 'dark' : 'light';
+	function cycleTheme() {
+		theme = themes[(themes.indexOf(theme) + 1) % themes.length];
 		document.documentElement.dataset.theme = theme;
 	}
 
@@ -36,7 +37,7 @@
 	</span>
 	<span class="flex gap-2 pr-2">
 		<button onclick={toggleMode}>{mode === 'soft' ? 'Hard' : 'Soft'} Mode</button>
-		<button onclick={toggleTheme}>{theme === 'light' ? 'Dark' : 'Light'} Mode</button>
+		<button onclick={cycleTheme}>Theme: {theme}</button>
 	</span>
 </nav>
 
