@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Text, Card } from '$lib/design-system';
+	import { Text, Card } from '@wl/frontend-system';
 
 	/**
 	 * Renders a list of blog post filenames.
@@ -12,16 +12,18 @@
 	<Text as="h1" variant="heading" size="3xl">Blog Posts</Text>
 
 	{#if data.posts.length === 0}
-		<Text variant="body" color="subtext">No blog posts found.</Text>
+		<Text variant="body" tone="muted">No blog posts found.</Text>
 	{:else}
 		<!-- eslint-disable svelte/no-navigation-without-resolve -->
 		<div class="space-y-4">
 			{#each data.posts as post (post)}
-				<Card>
-					<a href={`/blog/${post}`} class="text-brand hover:underline">
-						<Text as="span" variant="body" color="brand">{post}</Text>
-					</a>
-				</Card>
+				<Card.Root>
+					<Card.Content>
+						<a href={`/blog/${post}`} class="hover:underline">
+							<Text as="span" variant="body" tone="accent">{post}</Text>
+						</a>
+					</Card.Content>
+				</Card.Root>
 			{/each}
 		</div>
 		<!-- eslint-enable svelte/no-navigation-without-resolve -->

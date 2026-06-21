@@ -4,6 +4,11 @@
   # https://devenv.sh/basics/
   env.GREET = "The Cave Development Environment";
 
+  # Pinned @wl/frontend-system tarball (from the flake input in devenv.yaml).
+  # Install it with:  npm install "$FRONTEND_SYSTEM_TGZ"
+  env.FRONTEND_SYSTEM_TGZ =
+    "${inputs.frontend-system.packages.${pkgs.stdenv.system}.default}/frontend-system.tgz";
+
   # https://devenv.sh/packages/
   packages = [
     pkgs.git

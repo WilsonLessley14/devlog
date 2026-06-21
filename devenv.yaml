@@ -1,0 +1,5 @@
+inputs:
+  nixpkgs:
+    url: github:cachix/devenv-nixpkgs/rolling
+  frontend-system:
+    url: github:WilsonLessley14/frontend-system
