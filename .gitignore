@@ -23,7 +23,6 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
 
-devenv.lock
 package-lock.json
 
 .devenv/
