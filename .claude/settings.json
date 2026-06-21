@@ -4,7 +4,6 @@
 			"Bash(git -C /Users/wlessley/Projects/devlog log --oneline -20)",
 			"Bash(just dev:*)",
 			"Bash(just test:*)",
-			"Bash(just storybook:*)",
 			"Bash(just build)",
 			"Bash(just preview)",
 			"Bash(just lint)",
@@ -12,15 +11,7 @@
 			"Bash(just check:*)",
 			"Bash(just outdated)",
 			"Bash(just info)",
-			"Bash(npm --version:*)",
-			"Bash(bd list:*)",
-			"Bash(bd show:*)",
-			"Bash(bd search:*)",
-			"Bash(bd status:*)",
-			"Bash(bd tree:*)",
-			"Bash(bd log:*)",
-			"Bash(bd prime:*)",
-			"Bash(bd doctor:*)"
+			"Bash(npm --version:*)"
 		],
 		"deny": [
 			"Read(.env*)",
@@ -36,13 +27,7 @@
 			"Bash(just install)",
 			"Bash(just update)",
 			"Bash(just clean:*)",
-			"Bash(git push:*)",
-			"Bash(bd new:*)",
-			"Bash(bd edit:*)",
-			"Bash(bd close:*)",
-			"Bash(bd delete:*)",
-			"Bash(bd assign:*)",
-			"Bash(bd tag:*)"
+			"Bash(git push:*)"
 		]
 	},
 	"env": {

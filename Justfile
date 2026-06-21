@@ -54,17 +54,6 @@ lint:
 format:
     npm run format
 
-# Storybook
-# =========
-
-# Start Storybook dev server
-storybook:
-    npm run storybook
-
-# Build Storybook static site
-storybook-build:
-    npm run build-storybook
-
 # Dependencies
 # ============
 
