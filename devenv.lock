@@ -36,10 +36,10 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1782051984,
+        "lastModified": 1782134411,
         "owner": "WilsonLessley14",
         "repo": "frontend-system",
-        "rev": "0dbec6096fa0d13bf67c507f42c78d81a733c55c",
+        "rev": "c629e8f9eafbce9b7ee523b07cffb441b5468131",
         "type": "github"
       },
       "original": {
