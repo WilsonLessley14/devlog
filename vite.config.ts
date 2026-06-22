@@ -5,6 +5,9 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
 	plugins: [tailwindcss(), sveltekit()],
+	// The design system ships .svelte source + directory re-exports, so it must be
+	// processed by Vite (not externalized) during SSR.
+	ssr: { noExternal: ['@wl/frontend-system'] },
 	test: {
 		workspace: [
 			{
