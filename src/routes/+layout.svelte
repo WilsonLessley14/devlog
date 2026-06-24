@@ -1,6 +1,7 @@
 <script lang="ts">
 	import '../app.css';
 	import AppBreadcrumb from '$lib/AppBreadcrumb.svelte';
+	import { themeNames } from '@wl/frontend-system';
 
 	let links = [
 		{ href: '/', label: 'Home' },
@@ -12,12 +13,13 @@
 
 	let { children } = $props();
 
-	const themes = ['light', 'dark', 'pink'] as const;
-	let theme = $state<(typeof themes)[number]>('light');
+	// Theme set comes from the design system, so any theme it ships (light, dark, pink,
+	// Aleksa, …) shows up here automatically — no need to maintain a list.
+	let theme = $state<string>(themeNames[0]);
 	let mode = $state<'soft' | 'hard'>('soft');
 
 	function cycleTheme() {
-		theme = themes[(themes.indexOf(theme) + 1) % themes.length];
+		theme = themeNames[(themeNames.indexOf(theme) + 1) % themeNames.length];
 		document.documentElement.dataset.theme = theme;
 	}
 
